@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<circuito xsi:schemaLocation="http://www.uniovi.es circuito.xsd" xmlns="http://www.uniovi.es" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <nombre>Las Vegas</nombre>
+    <distancia unidades="km">6.201</distancia>
+    <anchura_media unidades="m">15</anchura_media>
+    <fecha>18/11/2024</fecha>
+    <inicio>05:00</inicio>
+    <vueltas>50</vueltas>
+    <localidad>Las Vegas</localidad>
+    <pais>Estados Unidos</pais>
+    <referencias>
+        <referencia>
+            <titulo>DAZN: Las Vegas y su espectacular circuito de F1</titulo>
+            <url>https://www.dazn.com/es-ES/news/motor/las-vegas-y-su-espectacular-circuito-de-formula-1-asi-es-el-increible-trazado-que-vera-la-luz-en-2023/pdh50d9uw1go1wwtp3ks9nrx8</url>
+        </referencia>
+        <referencia>
+            <titulo>Wikipedia: Las Vegas Strip Circuit</titulo>
+            <url>https://en.wikipedia.org/wiki/Las_Vegas_Strip_Circuit</url>
+        </referencia>
+        <referencia>
+            <titulo>F1: Las Vegas</titulo>
+            <url>https://www.formula1.com/en/racing/2024/las-vegas/circuit</url>
+        </referencia>
+    </referencias>
+    <galeria_fotos>
+        <foto path="multimedia/imagenes/las_vegas_top_view.jpg"/>
+        <foto path="multimedia/imagenes/las_vegas_meta.webp"/>
+    </galeria_fotos>
+    <galeria_videos></galeria_videos>
+    <coordenadas>
+        <longitud>-115.1745</longitud>
+        <latitud>36.1699</latitud>
+        <altura>610</altura>
+    </coordenadas>
+    <tramos>
+        <tramo>
+            <distancia unidades="km">0.553</distancia>
+            <punto_final>
+                <longitud>-115.1522</longitud>
+                <latitud>36.1275</latitud>
+                <altura >635</altura>
+            </punto_final>
+            <sector>2</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="km">0.263</distancia>
+            <punto_final>
+                <longitud>-115.1597</longitud>
+                <latitud>36.1200</latitud>
+                <altura>630</altura>
+            </punto_final>
+            <sector>2</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="km">0.371</distancia>
+            <punto_final>
+                <longitud>-115.1639</longitud>
+                <latitud>36.1189</latitud>
+                <altura>630</altura>
+            </punto_final>
+            <sector>1</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="km">0.912</distancia>
+            <punto_final>
+                <longitud>-115.1639</longitud>
+                <latitud>36.1108</latitud>
+                <altura>631</altura>
+            </punto_final>
+            <sector>1</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="km">0.150</distancia>
+            <punto_final>
+                <longitud>-115.1628</longitud>
+                <latitud>36.1097</latitud>
+                <altura>631</altura>
+            </punto_final>
+            <sector>1</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="km">0.244</distancia> 
+            <punto_final>
+                <longitud>-115.1603</longitud>
+                <latitud>36.1103</latitud>
+                <altura>631</altura>
+            </punto_final>
+            <sector>1</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="km">0.399</distancia> 
+            <punto_final>
+                <longitud>-115.1636</longitud>
+                <latitud>36.1078</latitud>
+                <altura>635</altura>
+            </punto_final>
+            <sector>3</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="km">0.793</distancia> 
+            <punto_final>
+                <longitud>-115.1728</longitud>
+                <latitud>36.1078</latitud>
+                <altura>644</altura>
+            </punto_final>
+            <sector>3</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="km">1.352</distancia> 
+            <punto_final>
+                <longitud>-115.1725</longitud>
+                <latitud>36.1200</latitud>
+                <altura>639</altura>
+            </punto_final>
+            <sector>3</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="km">0.672</distancia> 
+            <punto_final>
+                <longitud>-115.1689</longitud>
+                <latitud>36.1253</latitud>
+                <altura>635</altura>
+            </punto_final>
+            <sector>2</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="km">0.455</distancia>
+            <punto_final>
+                <longitud>-115.1653</longitud>
+                <latitud>36.1225</latitud>
+                <altura>630</altura>
+            </punto_final>
+            <sector>2</sector>
+        </tramo>
+    </tramos>
+</circuito>
