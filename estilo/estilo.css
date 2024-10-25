@@ -22,7 +22,7 @@ h1 a {
     font-size: 30px;
 }
 
-nav a{
+header nav a{
     background-color: #C70039;
     color: #ffffff; 
     text-decoration: none;
@@ -39,7 +39,7 @@ nav {
     margin-bottom: 10px;
 }
 
-h1 a:hover, nav a:hover {
+header h1 a:hover, header nav a:hover {
     background-color: #C70039;
     color: #000000;
 }
