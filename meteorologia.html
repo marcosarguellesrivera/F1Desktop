@@ -11,6 +11,7 @@
     <title>Meteorología</title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css"/>
+    <script src="js/pais.js"></script>
 </head>
 
 <body>
@@ -29,6 +30,14 @@
     </header>
     <p><a id="migas" href="index.html">F1 Desktop</a> >> Meteorología</p>
     <h2>Meteorología</h2>
-    <p>En desarrollo</p>
+    <script>
+        const eeuu = new Pais();
+        eeuu.actualizarAtributos('Estados Unidos de América', 'Washington D.C', 'Las Vegas Strip Circuit', 331000000, 'República', '36.1097º N, 115.1765º W', 'Cristianismo');
+        document.write(`
+            <h3>${eeuu.getNombre()}</h3>
+            <h4>${eeuu.getCapital()}</h4>
+            ${eeuu.getInfoHtml()}`);
+        eeuu.writeCoordenadasMeta();
+    </script>
 </body>
 </html>
