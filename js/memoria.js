@@ -18,45 +18,52 @@ class Memoria {
             { element: "red bull", source: "multimedia/imagenes/Red_Bull_Racing_logo.svg"},
             { element: "red bull", source: "multimedia/imagenes/Red_Bull_Racing_logo.svg"}
         ];
+
+        this.shuffleElements();
     }
 
     shuffleElements() {
         this.lockBoard = true;
-        this.elements.sort(() => Math.random - 0.5);
+        this.elements.sort(() => Math.random() - 0.5);
         this.lockBoard = false;
     }
 
-    flipCard(card) {
-        if(this.lockBoard || card === this.firstCard) return;
-        this.lockBoard = true;
-        if(!this.hasFlippedCard) {
-            this.hasFlippedCard = true;
-            this.firstCard = card;
+    flipCard(game) {
+        if(game.lockBoard || this.dataset.state === "revealed" || (game.firstCard && game.firstCard === this)) return;
+        this.dataset.state = "flip";
+        this.lastChild.hidden = false;
+        if(!game.hasFlippedCard) {
+            game.hasFlippedCard = true;
+            game.firstCard = this;
         } else {
-            this.secondCard = card;
-            this.checkForMatch();
+            game.hasFlippedCard = false;
+            game.secondCard = this;
+            game.checkForMatch;
         }
-        this.lockBoard = false;
     }
 
     checkForMatch() {
         const isMatch = this.firstCard.dataset.element === this.secondCard.dataset.element;
-        if(!isMatch) this.unflip();
+        if(isMatch) this.disableCards
+        else this.unflipCards();
     }
 
     disableCards() {
-        this.firstCard.setAttribute("data-state", "revealed");
-        this.secondCard.setAttribute("data-state", "revealed");
+        this.firstCard.dataset.state = 'revealed';
+        this.secondCard.dataset.state = 'revealed';
         this.resetBoard();
+        this.checkForWin();
     }
 
     unflipCards() {
         this.lockBoard = true;
         setTimeout(() => {
-            this.firstCard.setAttribute("data-state", "");
-            this.secondCard.setAttribute("data-state", "");
-        }, 2000);
-        this.resetBoard();
+            if (this.firstCard.dataset.state === 'flip')
+                this.firstCard.dataset.state = '';
+            if (this.secondCard.dataset.state === 'flip')
+                this.secondCard.dataset.state = '';
+            this.resetBoard();
+        }, 1000);
     }
 
     resetBoard() {
@@ -64,5 +71,37 @@ class Memoria {
         this.secondCard = null;
         this.hasFlippedCard = false;
         this.lockBoard = false;
+    }
+
+    createElements() {
+        const main = document.querySelector("main");
+        const section = document.createElement("section");
+        const h3 = document.createElement("h3");
+        h3.textContent = "Juego de memoria";
+        section.appendChild(h3);
+
+        this.elements.forEach(e => {
+            const card = document.createElement("article");
+            const header = document.createElement("h3");
+            const img = document.createElement("img");
+            card.setAttribute("data-element", e.element);
+            header.textContent = "Tarjeta de memoria";
+            img.src = e.source;
+            img.alt = e.element;
+            img.classList.add("card-image");
+            card.appendChild(header);
+            card.appendChild(img);
+            main.appendChild(card);
+        });
+        main.appendChild(section);
+    }
+
+    addEventListeners() {
+        const cards = document.querySelectorAll(".card");
+        cards.forEach(card => {card.addEventListener("click", this.flipCard.bind(card, this));});
+    }
+
+    checkForWin() {
+
     }
 }

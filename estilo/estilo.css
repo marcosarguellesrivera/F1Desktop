@@ -11,7 +11,19 @@ body {
 header {
     background-color: #C70039;
     color: #ffffff;
-    padding: 20px;
+    padding: 15px;
+}
+
+header h1 {
+    display: block;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header nav {
+    align-items: center;
+    display: grid; /* Utiliza grid para el contenedor */
+    grid-template-columns: repeat(7, 1fr); /* 7 columnas de igual tamaño */
 }
 
 /*Especificidad: (0, 0, 0, 3) */
@@ -19,14 +31,15 @@ h1 a {
     background-color: #C70039;
     color: #ffffff; 
     text-decoration: none;
-    font-size: 30px;
+    font-size: 1.25em;
 }
 
-header nav a{
+header nav a {
     background-color: #C70039;
     color: #ffffff; 
     text-decoration: none;
     text-align: center;
+    font-size: 1.25em;
 }
 
 .active {
@@ -46,6 +59,7 @@ header h1 a:hover, header nav a:hover {
 
 h2 {
     text-align: center;
+    font-size: 1.75em;
 }
 
 #tabla {
@@ -138,6 +152,11 @@ audio {
     width: 25%;
     display: block;
     margin: 10px auto;
+}
+
+img {
+    display: block;
+    margin: 20px auto;
 }
 
 @media (max-width: 800) {

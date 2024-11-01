@@ -11,6 +11,7 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="estilo/memoria.css"/>
     <script src="js/memoria.js"></script>
 </head>
 <body>
@@ -28,6 +29,16 @@
         </nav>
     </header>
     <p><a id="migas" href="index.html">F1 Desktop</a> >> <a id="migas" href="juegos.html">Juegos</a> >> Memoria</a></p>
-    <h2>Memoria</h2>
+    <main>
+        <h2>Juego de Memoria</h2>
+        <nav>
+            <a href="memoria.html">Juego de Memoria</a>
+        </nav>
+    </main>
+    <script>
+        memoria = new Memoria();
+        memoria.createElements();
+        memoria.addEventListeners();
+    </script>
 </body>
 </html>
