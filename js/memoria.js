@@ -38,13 +38,13 @@ class Memoria {
         } else {
             game.hasFlippedCard = false;
             game.secondCard = this;
-            game.checkForMatch;
+            game.checkForMatch();
         }
     }
 
     checkForMatch() {
         const isMatch = this.firstCard.dataset.element === this.secondCard.dataset.element;
-        if(isMatch) this.disableCards
+        if(isMatch) this.disableCards();
         else this.unflipCards();
     }
 
@@ -63,7 +63,7 @@ class Memoria {
             if (this.secondCard.dataset.state === 'flip')
                 this.secondCard.dataset.state = '';
             this.resetBoard();
-        }, 1000);
+        }, 2500);
     }
 
     resetBoard() {
@@ -91,17 +91,24 @@ class Memoria {
             img.classList.add("card-image");
             card.appendChild(header);
             card.appendChild(img);
-            main.appendChild(card);
+            section.appendChild(card);
         });
         main.appendChild(section);
     }
 
     addEventListeners() {
-        const cards = document.querySelectorAll(".card");
-        cards.forEach(card => {card.addEventListener("click", this.flipCard.bind(card, this));});
+        const cards = document.querySelectorAll('article');  
+        cards.forEach(card => {
+            card.addEventListener('click', this.flipCard.bind(card, this));
+        });
     }
 
     checkForWin() {
-
+        const revealedCards = document.querySelectorAll('article[data-state="revealed"]');
+        if (revealedCards.length === this.elements.length) {
+            setTimeout(() => {
+                alert('¡Enhorabuena! Has ganado el juego.');
+           }, 500); 
+        }
     }
 }

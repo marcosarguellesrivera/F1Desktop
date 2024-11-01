@@ -1,17 +1,11 @@
 /*Marcos Argüelles Rivera UO295029*/
 
-section:nth-child(3) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 3em;
-}
-
 /* Especificidad: 001 */
 h3 {
     font-size: 1.2em;
     width: 100%;
   }
+
 /* Especificidad: 001 */
 section {
     display: flex;
@@ -29,7 +23,6 @@ article {
     cursor: pointer;
     transform-style: preserve-3d;
     transition: transform .5s;
-    box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, .3);
 }
 
 /* Especificidad: 011 */ 
@@ -50,17 +43,16 @@ article img {
     height: 100%;
     position: absolute;
     border-radius: 0.2em;
-    background: #FFA384;
-    color: black;
+    background: #C70039;
+    color: #000000;
     backface-visibility: hidden;
 }
 
 /* Especificidad: 002 */
 article h3 {
     display: flex;
-    flex-direction: row;
+    text-align: center;
     align-items: center;
-    justify-content: center;
 }
 
 /* Especificidad: 011 */
@@ -69,4 +61,3 @@ img {
     height: 150px;
     transform: rotateY(180deg);
 }
-

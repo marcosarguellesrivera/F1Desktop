@@ -7,6 +7,21 @@ body {
     color: #333;
 }
 
+main {
+    max-width: 60em;
+    margin: 10em auto;
+    padding: 3em;
+    background-color: #fff;
+    color: #000000;
+    box-shadow: 0 0 2em #0000001a;
+}
+
+section {
+    box-shadow: 0 0 2em #0000001a;
+    margin: 2em auto;
+    padding: 3em;
+}
+
 /*Especificidad: (0, 0, 0, 2) */
 header {
     background-color: #C70039;
@@ -60,6 +75,9 @@ header h1 a:hover, header nav a:hover {
 h2 {
     text-align: center;
     font-size: 1.75em;
+    border-bottom: 0.2em solid #000000;
+    padding-bottom: 1em;
+    margin-bottom: 2em;;
 }
 
 #tabla {
