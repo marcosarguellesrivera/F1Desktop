@@ -1,34 +1,28 @@
 class Pais {
-    constructor(nombre, capital, circuito, poblacion, gobierno, meta, religion) {
+    constructor(nombre, capital, circuito) {
         this.nombre = nombre;
         this.capital = capital;
         this.circuito = circuito;
+        this.rellenarAtributos(331000000, 'República', '36.1097º N, 115.1765º W', 'Cristianismo');
+    }
+
+    rellenarAtributos(poblacion, gobierno, meta, religion) {
         this.poblacion = poblacion;
         this.gobierno = gobierno;
         this.meta = meta;
         this.religion =  religion;
     }
 
-    actualizarAtributos({nombre, capital, circuito, poblacion, gobierno, meta, religion}) {
-        if(nombre) this.nombre = nombre;
-        if(capital) this.capital = capital;
-        if(circuito) this.circuito = circuito;
-        if(poblacion) this.poblacion = poblacion;
-        if(gobierno) this.gobierno = gobierno;
-        if(meta) this.meta = meta;
-        if(religion) this.religion = religion;
-    }
-
     getNombre() {
-        return `País: ${this.nombre}`;
+        return this.nombre + "";
     }
 
     getCapital() {
-        return `Capital: ${this.capital}`;
+        return this.capital + "";
     }
 
     writeCoordenadasMeta() {
-        document.write(`Coordenadas de la meta: ${this.meta}`);
+        document.write("<h3>Coordenadas de la meta: " + this.meta + "</h3>");
     }
 
     getInfoHtml() {
