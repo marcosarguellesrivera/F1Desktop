@@ -1,0 +1,65 @@
+/*Marcos Argüelles Rivera UO295029*/
+.container {
+    display: grid;
+    justify-content: center;
+    margin: 3em;
+    box-shadow: none;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    row-gap: 50px;
+}
+
+div {
+    aspect-ratio: 1;            /* Hace que las celdas sean cuadradas */
+    border-radius: 50%;         /* Hace que las luces sean círculos */
+    border: 5px solid #000;     /* Borde oscuro */
+    background-color: #0007;    /* Fondo semitransparente */
+}
+
+.start {
+    grid-column: 2 / 3;
+}
+
+.stop {
+    grid-column: 3 / 4;
+}
+
+.load > div {
+    animation: changeBackground 1s forwards;
+}
+
+.unload > div {
+    animation: out forwards;
+}
+
+@keyframes changeBackground {
+    100% {
+        background-color: #C70039;
+    }
+}
+
+@keyframes out {
+    100% {
+        background-color: #000;
+    }
+}
+
+.load > div:nth-child(1) {
+    animation-delay: 0ms;
+}
+
+.load > div:nth-child(2) {
+    animation-delay: 500ms;
+}
+
+.load > div:nth-child(3) {
+    animation-delay: 1000ms;
+}
+
+.load > div:nth-child(4) {
+    animation-delay: 1500ms;
+}
+
+p {
+    text-align: center;
+}

@@ -55,6 +55,10 @@ article h3 {
     align-items: center;
 }
 
+h3 {
+    text-align: center;
+}
+
 /* Especificidad: 011 */
 img {
     width: 200px;

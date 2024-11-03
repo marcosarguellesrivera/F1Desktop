@@ -5,14 +5,15 @@
     <!-- Datos que describen el documento -->
     <meta charset="UTF-8" />
     <meta name="author" content="Marcos Argüelles Rivera"/>
-    <meta name="description" content="Apartado de juegos de F1 Desktop"/>
-    <meta name="keywords" content="juegos,f1"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=","/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-    <title>Juegos</title>
+    <title></title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="estilo/semaforo.css"/>
+    <script src="js/semaforo.js"></script>
 </head>
-
 <body>
     <!-- Datos con el contenidos que aparece en el navegador -->
     <header>
@@ -27,13 +28,15 @@
             <a href="viajes.html">Viajes</a>
         </nav>
     </header>
-    <p><a id="migas" href="index.html">F1 Desktop</a> >> Juegos</p>
+    <p><a id="migas" href="index.html">F1 Desktop</a> >> <a id="migas" href="juegos.html">Juegos</a> >> Semaforo</a></p>
     <main>
-        <h2>Juegos</h2>
         <nav>
-            <a href="memoria.html">Memoria</a>
-            <a href="semaforo.html">Semaforo</a>
+            <a href="memoria.html">Juego de Memoria</a>
+            <a href="semaforo.html">Semáforo</a>
         </nav>
+        <script>
+            semaforo = new Semaforo();
+        </script>
     </main>
 </body>
 </html>
