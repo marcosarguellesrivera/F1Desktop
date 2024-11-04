@@ -34,10 +34,10 @@
     </coordenadas>
     <tramos>
         <tramo>
-            <distancia unidades="km">0.553</distancia>
+            <distancia unidades="km">0</distancia>
             <punto_final>
-                <longitud>-115.1522</longitud>
-                <latitud>36.1275</latitud>
+                <longitud>-115.1594</longitud>
+                <latitud>36.1222</latitud>
                 <altura >635</altura>
             </punto_final>
             <sector>2</sector>
@@ -129,6 +129,15 @@
                 <longitud>-115.1653</longitud>
                 <latitud>36.1225</latitud>
                 <altura>630</altura>
+            </punto_final>
+            <sector>2</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="km">0.553</distancia>
+            <punto_final>
+                <longitud>-115.1594</longitud>
+                <latitud>36.1222</latitud>
+                <altura >635</altura>
             </punto_final>
             <sector>2</sector>
         </tramo>

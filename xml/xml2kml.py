@@ -1,16 +1,15 @@
 import xml.etree.ElementTree as et
 
-get_tramos = ".//{http://www.uniovi.es}circuito//{http://www.uniovi.es}tramos"
-get_puntos = "{http://www.uniovi.es}punto"
-
-
-def main(archivo):
+def main():
+    archivo = input("Introduce el nombre del archivo: ")
     try:
         xml = et.parse(archivo)
     except IOError:
         print(f'El archivo {archivo} no existe')
+        exit()
     except et.ParseError:
         print(f'Error parseando el archivo {archivo}')
+        exit()
     
     final = input("Nombre del archivo final: ")
     
@@ -18,12 +17,13 @@ def main(archivo):
         archivoFinal = open(final, 'w')
     except IOError:
         print(f'Error al crear el archivo {final}')
+        exit()
     
-    principioKml(archivoFinal, final)
-    escribirCoordenadas(archivo.getroot(), archivoFinal)
-    finalKml(archivoFinal)
+    prologo(archivoFinal, final)
+    escribirCoordenadas(xml.getroot(), archivoFinal)
+    epilogo(archivoFinal)
 
-def principioKml(archivo, nombreArchivo):
+def prologo(archivo, nombreArchivo):
     archivo.write('<?xml version="1.0" encoding="UTF-8"?>\n')
     archivo.write('<kml xmlns="http://www.opengis.net/kml/2.2">\n')
     archivo.write("<Document>\n")
@@ -35,12 +35,24 @@ def principioKml(archivo, nombreArchivo):
     archivo.write("<coordinates>\n")
 
 def escribirCoordenadas(raiz, archivo):
-    puntos = raiz.find(get_tramos).findAll(get_puntos)
-    for punto in puntos:
-        str = ""
+    tramos = raiz.find("{http://www.uniovi.es}tramos")
+
+    if(tramos == None): 
+        print("No hay tramos")
+        return
+
+    for tramo in tramos.findall("{http://www.uniovi.es}tramo"):
+        coordenadas = tramo.find("{http://www.uniovi.es}punto_final")
+        if(coordenadas == None):
+            print("No hay coordenadas")
+            return
+        longitud = coordenadas.find("{http://www.uniovi.es}longitud").text
+        latitud = coordenadas.find("{http://www.uniovi.es}latitud").text
+        altura = coordenadas.find("{http://www.uniovi.es}altura").text
+        archivo.write(f"{longitud},{latitud},{altura}\n")
 
 
-def finalKml(archivo):
+def epilogo(archivo):
     archivo.write("</coordinates>\n")
     archivo.write("<altitudeMode>relativeToGround</altitudeMode>\n")
     archivo.write("</LineString>\n")
@@ -53,3 +65,6 @@ def finalKml(archivo):
     archivo.write("</Placemark>\n")
     archivo.write("</Document>\n")
     archivo.write("</kml>\n")
+
+if(__name__ == "__main__"):
+    main()
