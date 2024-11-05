@@ -39,8 +39,8 @@ def escribirAlturas(raiz, archivo):
         print("No hay tramos")
         return
     lista_tramos = tramos.findall("{http://www.uniovi.es}tramo")
-    alturas = [len(lista_tramos)]
-    distancias = [len(lista_tramos)]
+    alturas = [650]
+    distancias = [10]
 
     for tramo in lista_tramos:
         coordenadas = tramo.find("{http://www.uniovi.es}punto_final")
@@ -52,7 +52,7 @@ def escribirAlturas(raiz, archivo):
             print("No hay distancia")
             return
         alturas.append(float(coordenadas.find("{http://www.uniovi.es}altura").text))
-        distancias.append(float(distancia.text))
+        distancias.append(float(distancia.text) * 20 + 10)
 
     total = 0
     for i in range(1, len(alturas)):
