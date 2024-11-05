@@ -29,13 +29,16 @@ class Semaforo {
         buttonStop.classList.add("stop");
         buttonStop.addEventListener("click", this.stopReaction.bind(this));
         buttonStop.disabled = true;
+        this.p = document.createElement("p");
+        this.p.textContent = "Tiempo de reacción: -";
         section.appendChild(buttonStop);
         main.appendChild(section);
+        main.appendChild(this.p);
     }
 
     initSequence() {
-        const section = document.querySelector(".container");
-        section.classList.add("load");
+        const main = document.querySelector("main");
+        main.classList.add("load");
         const button = document.querySelector(".start");
         button.disabled = true;
         setTimeout(() =>{
@@ -45,9 +48,9 @@ class Semaforo {
     }
     
     endSequence() {
-        const section = document.querySelector(".container");
-        section.classList.remove("load");
-        section.classList.add("unload");
+        const main = document.querySelector("main");
+        main.classList.remove("load");
+        main.classList.add("unload");
         const button = document.querySelector(".stop");
         button.disabled = false;
     }
@@ -55,15 +58,12 @@ class Semaforo {
     stopReaction() {
         this.clic_moment = new Date();
         const time = ((this.clic_moment - this.unload_moment) / 1000).toFixed(3);
-        const p = document.createElement("p");
-        p.textContent = time + "s";
+        this.p.textContent = "Tiempo de reacción: " + time + "s";
         const main = document.querySelector("main");
-        main.appendChild(p);
         const start = document.querySelector(".start");
         start.disabled = false;
         const stop = document.querySelector(".stop");
         stop.disabled = true;
-        const section = document.querySelector(".container");
-        section.classList.remove("unload");
+        main.classList.remove("unload");
     }
 }

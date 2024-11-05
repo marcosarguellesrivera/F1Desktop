@@ -15,7 +15,7 @@ section {
   }
 
 /* Especificidad: 001 */
-article {
+section article {
     width: 11em;
     height: 15em;
     margin: 0.3em;
@@ -26,18 +26,18 @@ article {
 }
 
 /* Especificidad: 011 */ 
-article[data-state="flip"] {
+section article[data-state="flip"] {
     transform: rotateY(180deg);
 }
 
 /* Especificidad: 011 */
-article[data-state="revealed"] {
+section article[data-state="revealed"] {
     transform: rotateY(180deg);
 }
 
 /* Especificidad: 002 */
-article h3,
-article img {
+section article h3,
+section article img {
     margin: 0;
     width: 100%;
     height: 100%;
@@ -49,7 +49,7 @@ article img {
 }
 
 /* Especificidad: 002 */
-article h3 {
+section article h3 {
     display: flex;
     text-align: center;
     align-items: center;
