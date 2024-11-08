@@ -12,6 +12,10 @@
     <link rel="icon" type="image/icon" href="multimedia/imagenes/f1.png">
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="estilo/article_elements.css"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
+        crossorigin="anonymous"></script>
     <script src="js/pais.js"></script>
 </head>
 
@@ -38,6 +42,7 @@
             document.write("<h3>Capital: " + eeuu.getCapital() + "</h3>");
             eeuu.writeCoordenadasMeta();
             document.write(eeuu.getInfoHtml());
+            eeuu.getTiempoMeta();
         </script>
     </main>
 </body>

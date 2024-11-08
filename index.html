@@ -12,6 +12,10 @@
     <link rel="icon" type="image/icon" href="multimedia/imagenes/f1.png">
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css"/>
+    <script src="js/fondo.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -28,7 +32,9 @@
             <a href="viajes.html">Viajes</a>
         </nav>
     </header>
-    <h2>Index</h2>
-    <p>En desarrollo</p>
+    <script>
+        const fondo = new Fondo("eeuu", "Washington D.C", "Las Vegas Circuit");
+        fondo.consultaFlickr();
+    </script>
 </body>
 </html>
