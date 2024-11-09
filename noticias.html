@@ -12,6 +12,8 @@
     <link rel="icon" type="image/icon" href="multimedia/imagenes/f1.png">
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="estilo/article_elements.css"/>
+    <script src="js/noticias.js"></script>
 </head>
 
 <body>
@@ -29,7 +31,22 @@
         </nav>
     </header>
     <h6><a href="index.html">F1 Desktop</a> >> Noticias</h6>
-    <h2>Noticias</h2>
-    <p>En desarrollo</p>
+    <main>
+        <h2>Noticias</h2>
+        <input type="file" onchange="noticias.readInputFile(this.files)"/>
+        <section>
+            <h3> Nueva noticia </h3>
+            <label>Titular:</label>
+            <input type="text">
+            <label>Contenido:</label>
+            <textarea> </textarea>
+            <label>Autor:</label>
+            <input type="text">
+            <button onclick="noticias.agregarNoticiaFormulario()">Agregar noticia</button>
+        </section>
+    </main>
+    <script>
+        const noticias = new Noticias();
+    </script>
 </body>
 </html>

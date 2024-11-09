@@ -63,3 +63,7 @@ div {
 main p {
     text-align: center;
 }
+
+button {
+    cursor: pointer;
+}

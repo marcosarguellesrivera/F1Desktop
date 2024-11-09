@@ -216,3 +216,9 @@ img {
         visibility: hidden;
     }
 }
+
+input {
+    display: block;
+    text-align: center;
+    align-self: center;
+}

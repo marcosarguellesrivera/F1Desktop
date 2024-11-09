@@ -52,7 +52,7 @@ class Pais {
                     const temp = parseFloat($(this).find("temperature").attr("value"));
                     const humedad = $(this).find("humidity").attr("value");
                     const icono = $(this).find("symbol").attr("var");
-                    const descripcionIcono = $(this).find("symbol").attr("name"); // Descripción del estado climático
+                    const descripcionIcono = $(this).find("symbol").attr("name");
                     const lluvia = parseFloat($(this).find("precipitation").attr("value") || 0);
 
                     if (!diasPronostico[fecha]) {
