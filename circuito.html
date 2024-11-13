@@ -12,6 +12,7 @@
     <link rel="icon" type="image/icon" href="multimedia/imagenes/f1.png">
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css"/>
+    <script src="js/circuito.js"></script>
 </head>
 
 <body>
@@ -29,7 +30,12 @@
         </nav>
     </header>
     <h6><a href="index.html">F1 Desktop</a> >> Circuito</h6>
-    <h2>Circuito</h2>
-    <p>En desarrollo</p>
+    <main>
+        <h2>Circuito</h2>
+        <input type="file" onchange="circuito.leerArchivoTexto(this.files)"/>
+    </main>
+    <script>
+        const circuito = new Circuito();
+    </script>
 </body>
 </html>

@@ -1,18 +1,15 @@
-class Viaje {
+class Viajes {
 
-    constructor (){
+    constructor () {
         navigator.geolocation.getCurrentPosition(this.getPosicion.bind(this), this.verErrores.bind(this));
     }
 
     getPosicion(posicion) {
-        this.mensaje = "Se ha realizado correctamente la peticiÃ³n de geolocalizaciÃ³n";
+        this.mensaje = "Se ha realizado correctamente la peticion de geolocalizacion";
         this.longitud         = posicion.coords.longitude; 
         this.latitud          = posicion.coords.latitude;  
-        this.precision        = posicion.coords.accuracy;
-        this.altitud          = posicion.coords.altitude;
-        this.precisionAltitud = posicion.coords.altitudeAccuracy;
-        this.rumbo            = posicion.coords.heading;
-        this.velocidad        = posicion.coords.speed;       
+        this.getMapaEstatico();
+        this.getMapaDinamico();
     }
 
     verErrores(error) {
@@ -30,30 +27,55 @@ class Viaje {
             this.mensaje = "Se ha producido un error desconocido"
             break;
         }
+        console.error(this.mensaje);
     }
 
-    getMapaEstaticoGoogle(donde) {
-        var ubicacion = document.querySelector(donde);
-        var apiKey = "&key=AIzaSyC6j4mF6blrc4kZ54S6vYZ2_FpMY9VzyRU";
+    getMapaEstatico() {
+        if (typeof this.latitud === "undefined" || typeof this.longitud === "undefined") {
+            console.error("Las coordenadas no están definidas");
+            return;
+        }
+        var section = document.querySelector("section");
+        var h3 = document.createElement("h3");
+        h3.textContent = "Mapa estático - Posición actual";
+        section.appendChild(h3);
+        var article = document.createElement("article");
+        var apiKey = "&key=AIzaSyDGGEsBmw72XKrpCtXAzTrtAqEKpKzd2kI";
         var url = "https://maps.googleapis.com/maps/api/staticmap?";
         var centro = "center=" + this.latitud + "," + this.longitud;
-        //zoom: 1 (el mundo), 5 (continentes), 10 (ciudad), 15 (calles), 20 (edificios)
         var zoom ="&zoom=15";
-        //TamaÃ±o del mapa en pixeles (obligatorio)
         var size = "&size=800x600";
-        //Escala (opcional)
-        //Formato (opcional): PNG,JPEG,GIF
-        //Tipo de mapa (opcional)
-        //Idioma (opcional)
-        //region (opcional)
-        //marcadores (opcional)
         var marcador = "&markers=color:red%7Clabel:S%7C" + this.latitud + "," + this.longitud;
-        //rutas. path (opcional)
-        //visible (optional)
-        //style (opcional)
         var sensor = "&sensor=false"; 
-        
         this.imagenMapa = url + centro + zoom + size + marcador + sensor + apiKey;
-        ubicacion.innerHTML = "<img src='"+ this.imagenMapa + "' alt='mapa estatico google' />";
+        article.innerHTML = "<img src='"+ this.imagenMapa + "' alt='mapa estatico google' />";
+        section.appendChild(article);
     }
+
+    getMapaDinamico() {
+        if (typeof this.latitud === "undefined" || typeof this.longitud === "undefined") {
+            console.error("Las coordenadas no están definidas");
+            return;
+        }
+        const opcionesMapa = {
+            center: { lat: this.latitud, lng: this.longitud },
+            zoom: 15,
+        };
+        const section = document.querySelector("section");
+        var h3 = document.createElement("h3");
+        h3.textContent = "Mapa dinámico - Posición actual";
+        section.appendChild(h3);
+        const div = document.createElement("div");
+        const mapa = new google.maps.Map(div, opcionesMapa);
+        new google.maps.Marker({
+            position: { lat: this.latitud, lng: this.longitud },
+            map: mapa,
+            title: "Tu ubicación",
+        });
+        section.appendChild(div);
+    }
+}
+
+function initMap() {
+    const viajes = new Viajes();
 }
