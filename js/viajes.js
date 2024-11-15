@@ -35,10 +35,10 @@ class Viajes {
             console.error("Las coordenadas no están definidas");
             return;
         }
-        var section = document.querySelector("section");
+        var main = document.querySelector("main");
         var h3 = document.createElement("h3");
         h3.textContent = "Mapa estático - Posición actual";
-        section.appendChild(h3);
+        main.appendChild(h3);
         var article = document.createElement("article");
         var apiKey = "&key=AIzaSyDGGEsBmw72XKrpCtXAzTrtAqEKpKzd2kI";
         var url = "https://maps.googleapis.com/maps/api/staticmap?";
@@ -49,7 +49,7 @@ class Viajes {
         var sensor = "&sensor=false"; 
         this.imagenMapa = url + centro + zoom + size + marcador + sensor + apiKey;
         article.innerHTML = "<img src='"+ this.imagenMapa + "' alt='mapa estatico google' />";
-        section.appendChild(article);
+        main.appendChild(article);
     }
 
     getMapaDinamico() {
@@ -61,10 +61,10 @@ class Viajes {
             center: { lat: this.latitud, lng: this.longitud },
             zoom: 15,
         };
-        const section = document.querySelector("section");
+        const main = document.querySelector("main");
         var h3 = document.createElement("h3");
         h3.textContent = "Mapa dinámico - Posición actual";
-        section.appendChild(h3);
+        main.appendChild(h3);
         const div = document.createElement("div");
         const mapa = new google.maps.Map(div, opcionesMapa);
         new google.maps.Marker({
@@ -72,7 +72,7 @@ class Viajes {
             map: mapa,
             title: "Tu ubicación",
         });
-        section.appendChild(div);
+        main.appendChild(div);
     }
 }
 

@@ -1,5 +1,17 @@
 /*Marcos Argüelles Rivera UO295029*/
 
+/*Especificidad: (0, 0, 1) */
 header {
-    display: flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    row-gap: 1em;           
+    column-gap: 0;
+}
+
+/*Especificidad: (0, 0, 2) */
+header > h1 {
+    flex-basis: 100%;
+    text-align: center;
 }

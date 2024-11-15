@@ -1,72 +1,88 @@
 /*Marcos Argüelles Rivera UO295029*/
 
-/*Especificidad: (0, 0, 0, 1) */
+/*Especificidad: (0, 1, 0) */
+.active {
+    color: #000000;
+    background-color: #C70039;
+    font-weight: bold;
+}
+
+/*Especificidad: (0, 0, 1) */
+a {
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 1em;
+    padding-inline: 1em;
+}
+
+/*Especificidad: (0, 1, 1) */
+a:hover {
+    background-color: #ffffff;
+    color: #c70039; 
+}
+
+/*Especificidad (0, 0, 1) */
+audio {
+    width: 50%;
+    display: block;
+    margin: 1em auto;
+}
+
+/*Especificidad: (0, 0, 1) */
 body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: #ffffff;
     color: #333;
 }
 
-nav {
-    width:100%;
-    margin-bottom: 10px;
-    justify-content: center;
-    display: flex;
-}
-
-a {
-    background-color: #ffffff;
-    color: #000000;
-    font-size: 16px;
-    padding-inline: 10px;
-}
-
-h6 {
+/*Especificidad: (0, 1, 2) */
+body > p {
     font-size: medium;
     margin-left: 0.5em;
     font-weight: normal;
     margin-top: 0.5em;
 }
 
-h6 a {
+/*Especificidad: (0, 0, 3) */
+body > p > a {
     padding: 0%;
 }
 
-main {
-    max-width: 60em;
-    margin: 5em auto;
-    padding: 3em;
-    background-color: #fff;
-    color: #000000;
-    box-shadow: 0 0 2em #0000001a;
-}
-
-section, aside {
-    box-shadow: 0 0 2em #0000001a;
-    margin: 2em auto;
-    padding: 3em;
-}
-
-/*Especificidad: (0, 0, 0, 2) */
-header {
-    background-color: #C70039;
-    color: #ffffff;
-    padding: 15px;
-}
-
-header h1 {
-    display: block;
+/*Especificidad: (0, 0, 1) */
+caption {
+    font-weight: bold;
+    background-color: #ffffff;
+    font-size: 1.25em;
     text-align: center;
-    margin-bottom: 30px;
+    color: #000000;
+    border-bottom: 0.3rem solid #c70039;
+    padding-bottom: 0.5em;
+    margin: 1em 0; 
 }
 
-header nav {
-    align-items: center;
-    display: grid; 
-    grid-template-columns: repeat(7, 1fr); 
+/*Especificidad: (0, 0, 1) */
+dl {
+    margin: 1em;
+    padding: 1em;
+    background-color: #ffffff;
+    border: 0.2rem solid #c70039;
+    border-radius: 1rem;
+    color: #000000;
 }
 
-/*Especificidad: (0, 0, 0, 3) */
+/*Especificidad: (0, 0, 1) */
+dt {
+    padding-left: 1em;
+    font-weight: bold;
+    font-style: oblique;
+}
+
+/*Especificidad: (0, 0, 1) */
+footer {
+    text-align: right;
+}
+
+/*Especificidad: (0, 0, 2) */
 h1 a {
     background-color: #C70039;
     color: #ffffff; 
@@ -74,25 +90,7 @@ h1 a {
     font-size: 1.25em;
 }
 
-header nav a {
-    background-color: #C70039;
-    color: #ffffff; 
-    text-decoration: none;
-    text-align: center;
-    font-size: 1.25em;
-}
-
-.active {
-    color: #000000;
-    background-color: #C70039;
-    font-weight: bold;
-}
-
-header h1 a:hover, header nav a:hover {
-    background-color: #C70039;
-    color: #000000;
-}
-
+/*Especificidad: (0, 0, 1) */
 h2 {
     text-align: center;
     font-size: 1.75em;
@@ -101,153 +99,192 @@ h2 {
     margin-bottom: 2em;;
 }
 
+/*Especificidad: (0, 0, 1) */
 h3 {
     text-align: center;
     font-size: 1.25em;
 }
 
+/*Especificidad: (0, 0, 1) */
 h4 {
     text-align: center;
 }
 
-caption {
-    font-weight: bold;
-    background-color: #ffffff;
-    font-size: 20px;
-    text-align: center;
-    color: #000000;
-    border-bottom: 3px solid #c70039;
-    padding-bottom: 5px;
-    margin: 10px 0; 
-}
-
-/*Especificidad: (0, 0, 0, 4) */
-a:hover {
-    background-color: #ffffff;
-    color: #c70039; 
-}
-
-ol {
-    margin: 10px 30px; 
-    padding-left: 30px; 
-    color: #000000;
-    background-color: #ffffff; 
-    border-left: 4px solid #c70039;
-}
-
-li {
-    padding: 5px 0;
-}
-
-ul {
-    list-style-type:none; 
-    margin: 10px 30px;
-    padding-left: 10px;
-    color: #000000;
-    background-color: #ffffff;
-    border-left: 4px solid #c70039; 
-}
-
-dl {
-    margin: 10px;
-    padding: 15px;
-    background-color: #ffffff;
-    border: 2px solid #c70039;
-    border-radius: 8px;
-    color: #000000;
-}
-
-dt {
-    padding-left: 10px;
-    font-weight: bold;
-    font-style: oblique;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-}
-
-th {
-    background-color: #c70039;
+/*Especificidad: (0, 0, 1) */
+header {
+    background-color: #C70039;
     color: #ffffff;
-    padding: 12px;
+    padding: 1em;
+}
+
+/*Especificidad: (0, 0, 2) */
+header h1 {
+    display: block;
     text-align: center;
-    font-weight: bold;
+    margin-bottom: 0.5em;
 }
 
-td {
-    border: 1px solid #dddddd; 
-    padding: 10px; 
-    text-align: center; 
+/*Especificidad: (0, 1, 2) */
+header a:hover {
+    background-color: #C70039;
+    color: #000000;
 }
 
-video {
-    width: 50%;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-    border: 2px #000000 solid;
+/*Especificidad: (0, 0, 2) */
+header nav {
+    align-items: center;
+    display: grid; 
+    grid-template-columns: repeat(7, 1fr); 
 }
 
-audio {
-    width: 25%;
-    display: block;
-    margin: 10px auto;
+/*Especificidad: (0, 0, 3) */
+header nav a {
+    background-color: #C70039;
+    color: #ffffff; 
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.25em;
 }
 
-img {
-    display: block;
-    margin: 20px auto;
-}
-
-@media (max-width: 800px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
-    header {
-        padding: 75%;
-    }
-
-    h1 a, nav a {
-        font-size: 0.75em;
-    }
-} 
-
-@media (max-width: 465px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
-    header {
-        padding: 60%;
-    }
-
-    h1 a, nav a {
-        font-size: 0.6em;
-    }
-
-    h6 {
-        visibility: hidden;
-    }
-}
-
+/*Especificidad: (0, 0, 1) */
 input {
     display: block;
     text-align: center;
     align-self: center;
 }
 
-section div {
+/*Especificidad: (0, 0, 1) */
+li {
+    padding: 0.4em 0;
+}
+
+/*Especificidad: (0, 0, 1) */
+main {
+    max-width: 60em;
+    margin: 5em auto;
+    padding: 3em;
+    background-color: #fff;
+    color: #000000;
+    box-shadow: 0 0 2em #0000001a;
+    align-items: center;
+}
+
+/*Especificidad: (0, 0, 2) */
+main > article {
+    text-align: center;
+}
+
+/*Especificidad: (0, 0, 2) */
+main > div {
     display: block;
-    height: 400px;
+    height: 25em;
     width: 100%;
-    border: 4px solid black;
 }
 
-div div {
-    display: flex;   
-    border: none;
-    height: auto;
-    width: auto;
+/*Especificidad: (0, 0, 1) */
+nav {
+    width:100%;
+    margin-bottom: 1em;
+    justify-content: center;
+    display: flex;
 }
 
+/*Especificidad: (0, 0, 1) */
+ol {
+    margin: 1em 3em; 
+    padding-left: 3em; 
+    color: #000000;
+    background-color: #ffffff; 
+    border-left: 0.3rem solid #c70039;
+}
+
+/*Especificidad: (0, 0, 2) */
+picture img {
+    display: block;
+    margin: 1em auto;
+}
+
+/*Especificidad: (0, 0, 1) */
 pre {
     max-width: 100%;
     overflow-x: auto;
     white-space: pre-wrap;
+}
+
+/*Especificidad: (0, 0, 1) */
+section, aside {
+    box-shadow: 0 0 2em #0000001a;
+    margin: 2em auto;
+    padding: 3em;
+}
+
+/*Especificidad: (0, 0, 1) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2em 0;
+}
+
+/*Especificidad: (0, 0, 1) */
+td {
+    border: 0.01rem solid #dddddd; 
+    padding: 0.8em; 
+    text-align: center; 
+}
+
+/*Especificidad: (0, 0, 1) */
+th {
+    background-color: #c70039;
+    color: #ffffff;
+    padding: 1em;
+    text-align: center;
+    font-weight: bold;
+}
+
+/*Especificidad: (0, 0, 1) */
+ul {
+    list-style-type:none; 
+    margin: 1em 3em;
+    padding-left: 1em;
+    color: #000000;
+    background-color: #ffffff;
+    border-left: 0.3rem solid #c70039; 
+}
+
+/*Especificidad: (0, 0, 1) */
+video {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    border: 0.2rem #000000 solid;
+}
+
+@media (max-width: 800px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
+    /*Especificidad: (0, 0, 2) */
+    h1 a, nav a {
+        font-size: 0.75em;
+    }
+    
+    /*Especificidad: (0, 0, 1) */
+    header {
+        padding: 75%;
+    }
+} 
+
+@media (max-width: 465px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
+    /*Especificidad: (0, 0, 2) */
+    body > p {
+        visibility: hidden;
+    }
+
+    /*Especificidad: (0, 0, 2) */
+    h1 a, nav a {
+        font-size: 0.6em;
+    }
+
+    /*Especificidad: (0, 0, 1) */
+    header {
+        padding: 60%;
+    }
 }

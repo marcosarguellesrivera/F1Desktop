@@ -53,7 +53,7 @@ class Pais {
                     const humedad = $(this).find("humidity").attr("value");
                     const icono = $(this).find("symbol").attr("var");
                     const descripcionIcono = $(this).find("symbol").attr("name");
-                    const lluvia = parseFloat($(this).find("precipitation").attr("value") || 0);
+                    const lluvia = parseFloat($(this).find("precipitation").attr("value") || -1);
 
                     if (!diasPronostico[fecha]) {
                         diasPronostico[fecha] = { temps: [], humedad, icono, descripcionIcono, lluvia };
@@ -65,11 +65,16 @@ class Pais {
                 for (let fecha in diasPronostico) {
                     if (contador >= 5) break;
 
-                    const { temps, humedad, icono, descripcionIcono, lluvia } = diasPronostico[fecha];
+                    const temps = diasPronostico[fecha].temps;
+                    const humedad = diasPronostico[fecha].humedad;
+                    const icono = diasPronostico[fecha].icono;
+                    const descripcionIcono = diasPronostico[fecha].descripcionIcono;
+                    var lluvia = diasPronostico[fecha].lluvia;
                     const tempMax = Math.max(...temps);
                     const tempMin = Math.min(...temps);
                     const descripcionClima = descripcionIcono || "Clima desconocido";
-
+                    if(lluvia >= 0) lluvia += " mm";
+                    else lluvia = "No hay datos";
                     $("main").append(`
                         <article>
                             <h3>${fecha}</h3>
@@ -91,13 +96,12 @@ class Pais {
                                         <td headers="tmax">${tempMax} °C</td>
                                         <td headers="tmin">${tempMin} °C</td>
                                         <td headers="humedad">${humedad}%</td>
-                                        <td headers="lluvia">${lluvia} mm</td>
+                                        <td headers="lluvia">${lluvia}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </article>
                     `);
-
                     contador++;
                 }
             },

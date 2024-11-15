@@ -4,7 +4,6 @@ class Agenda {
     }
 
     getAgenda() {
-        alert("Llamado");
         $.ajax({
             url: this.url,
             method: 'GET',
@@ -20,21 +19,26 @@ class Agenda {
                 const firstSection = document.querySelector("section");
                 if (firstSection) main.removeChild(firstSection);
                 races.forEach(function(race) {
-                    var h4 = document.createElement("h4");
-                    h4.textContent = race.raceName;
-                    var ul = document.createElement("ul");
-                    var circuit = document.createElement("li");
-                    circuit.textContent = "Circuito: " + race.Circuit.circuitName;
-                    var date = document.createElement("li");
-                    date.textContent = "Fecha y hora: " + race.date + " - " + (race.time || "No hay hora");
-                    var coords = document.createElement("li");
-                    coords.textContent = "Coordenadas: " + race.Circuit.Location.lat + ", " + race.Circuit.Location.long;
-                    ul.append(circuit);
-                    ul.append(date);
-                    ul.append(coords);
                     var article = document.createElement("article");
-                    article.append(h4);
-                    article.append(ul);
+                    var table = document.createElement("table");
+                    table.innerHTML = `
+                        <caption>${race.raceName}</caption>
+                        <thead>
+                            <tr>
+                                <th id="circuit" scope="col">Circuito</th>
+                                <th id="date" scope="col">Fecha y hora</th>
+                                <th id="coords" scope="col">Coordenadas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td headers="circuit">${race.Circuit.circuitName}</td>
+                            <td headers="date">${race.date + " - " + (race.time || "No hay hora")}</td>
+                            <td headers="coords">${race.Circuit.Location.lat + ", " + race.Circuit.Location.long}</td>
+                            </tr>
+                        </tbody>
+                        `;
+                    article.append(table);
                     section.append(article);
                 });
                 

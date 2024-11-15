@@ -1,11 +1,6 @@
 /*Marcos Argüelles Rivera UO295029*/
 
-section {
-    display: flex;
-    flex-direction: column; /* Organiza los elementos en una columna */
-    align-items: flex-start; /* Alinea los elementos (párrafos) a la izquierda */
-}
-
+/*Especificidad: (0, 0, 1) */
 article {
     display: block;
     padding: 0.01em 2em;
@@ -16,6 +11,17 @@ article {
     border: 0.2rem solid black;
 }
 
+/*Especificidad: (0, 0, 2) */
+article figure {
+    text-align: center;
+}
+
+/*Especificidad: (0, 0, 3) */
+article figure img {
+    border-bottom: 0.2rem solid black;
+}
+
+/*Especificidad: (0, 0, 2) */
 article h3 {
     font-size: 1.75em;
     padding: 0 0 0.5em 0;
@@ -23,14 +29,7 @@ article h3 {
     text-align: center;
 }
 
-article figure {
-    text-align: center;
-}
-
-article figure img {
-    border-bottom: 0.2rem solid black;
-}
-
+/*Especificidad: (0, 1, 1) y (0, 0, 1) */
 input[type="text"],
 textarea {
     width: 100%;
@@ -42,10 +41,14 @@ textarea {
     text-align: left;
 }
 
-textarea {
-    height: 7em;
+/*Especificidad: (0, 0, 1) */
+section {
+    display: flex;
+    flex-direction: column; /* Organiza los elementos en una columna */
+    align-items: flex-start; /* Alinea los elementos (párrafos) a la izquierda */
 }
 
+/*Especificidad: (0, 0, 2) */
 section button { 
     align-self: center;
     margin-top: 0.5em;
@@ -58,20 +61,26 @@ section button {
     color: #ffffff;
 }
 
+/*Especificidad: (0, 0, 2) */
 section h3 {
     margin-top: 0em;
     width: 100%;
     text-align: center;
 }
 
+/*Especificidad: (0, 0, 2) */
+section label {
+    font-weight: bold;
+    font-size: 1em;
+}
+
+/*Especificidad: (0, 0, 2) */
 section p {
-    word-wrap: break-word;
-    word-break: break-word;
     white-space: normal;
     overflow-wrap: break-word;
 }
 
-section label {
-    font-weight: bold;
-    font-size: 1em;
+/*Especificidad: (0, 0, 1) */
+textarea {
+    height: 7em;
 }

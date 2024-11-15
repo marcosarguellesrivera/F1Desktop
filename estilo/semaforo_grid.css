@@ -1,33 +1,71 @@
 /*Marcos Argüelles Rivera UO295029*/
+
+/*Especificidad: (0, 0, 1) */
+button {
+    cursor: pointer;
+}
+
+/*Especificidad: (0, 0, 1) */
+div {
+    aspect-ratio: 1;            /* Hace que las celdas sean cuadradas */
+    border-radius: 50%;         /* Hace que las luces sean círculos */
+    border: 5px solid #000;     /* Borde oscuro */
+    background-color: #0007; 
+    color: #000000;   /* Fondo semitransparente */
+}
+
+/*Especificidad: (0, 0, 1) */
+main p {
+    text-align: center;
+}
+
+/*Especificidad: (0, 1, 0) */
 .container {
     display: grid;
     justify-content: center;
     margin: 3em;
     box-shadow: none;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    row-gap: 50px;
+    column-gap: 1em;
+    row-gap: 5em;
 }
 
-div {
-    aspect-ratio: 1;            /* Hace que las celdas sean cuadradas */
-    border-radius: 50%;         /* Hace que las luces sean círculos */
-    border: 5px solid #000;     /* Borde oscuro */
-    background-color: #0007;    /* Fondo semitransparente */
-}
-
-.start {
-    grid-column: 2 / 3;
-}
-
-.stop {
-    grid-column: 3 / 4;
-}
-
+/*Especificidad: (0, 2, 1) */
 .load .container div {
     animation: changeBackground 1s forwards;
 }
 
+/*Especificidad: (0, 3, 1) */
+.load > .container > div:nth-child(1) {
+    animation-delay: 0ms;
+}
+
+/*Especificidad: (0, 3, 1) */
+.load > .container > div:nth-child(2) {
+    animation-delay: 500ms;
+}
+
+/*Especificidad: (0, 3, 1) */
+.load > .container > div:nth-child(3) {
+    animation-delay: 1000ms;
+}
+
+/*Especificidad: (0, 3, 1) */
+.load > .container > div:nth-child(4) {
+    animation-delay: 1500ms;
+}
+
+/*Especificidad: (0, 1, 0) */
+.start {
+    grid-column: 2 / 3;
+}
+
+/*Especificidad: (0, 1, 0) */
+.stop {
+    grid-column: 3 / 4;
+}
+
+/*Especificidad: (0, 2, 1) */
 .unload .container div {
     animation: out forwards;
 }
@@ -38,32 +76,8 @@ div {
     }
 }
 
-@keyframes out {
+@keyframes out { /*Las advertencias de redefinición en esta norma no afectan al código*/
     100% {
         background-color: #000;
     }
-}
-
-.load > .container > div:nth-child(1) {
-    animation-delay: 0ms;
-}
-
-.load > .container > div:nth-child(2) {
-    animation-delay: 500ms;
-}
-
-.load > .container > div:nth-child(3) {
-    animation-delay: 1000ms;
-}
-
-.load > .container > div:nth-child(4) {
-    animation-delay: 1500ms;
-}
-
-main p {
-    text-align: center;
-}
-
-button {
-    cursor: pointer;
 }
