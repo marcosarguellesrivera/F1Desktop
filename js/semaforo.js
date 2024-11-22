@@ -65,5 +65,11 @@ class Semaforo {
         const stop = document.querySelector(".stop");
         stop.disabled = true;
         main.classList.remove("unload");
+        this.createRecordForm(time);
+    }
+
+    createRecordForm(time) {
+        const main = docment.querySelector("main");
+        
     }
 }

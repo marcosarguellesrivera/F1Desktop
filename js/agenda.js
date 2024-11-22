@@ -45,7 +45,10 @@ class Agenda {
                 main.append(section);
                 }.bind(this),
                     error:function() {
-                        $("h2").html("¡Tenemos problemas! No se pudo obtener JSON"); 
+                        const main = document.querySelector("main");
+                        const p = document.createElement("p");
+                        p.textContent = "No se pudo obtener";
+                        main.appendChild(p);
                     }
                 });
     }
