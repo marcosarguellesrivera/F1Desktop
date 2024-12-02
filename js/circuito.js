@@ -8,11 +8,13 @@ class Circuito {
         }
     }
 
-    leerArchivoTexto(files) { 
+    leerArchivoTexto(archivos) { 
         if(this.supports) {
-            var archivo = files[0];
+            var archivo = archivos[0];
             var main = document.querySelector("main");
-            var section = document.createElement("section");
+            var section = document.querySelector("section");
+            if(section) main.removeChild(section);
+            section = document.createElement("section");
             var nombre = document.createElement("h3");
             var tamano = document.createElement("p");
             var tipo = document.createElement("p");
@@ -47,6 +49,40 @@ class Circuito {
                 section.appendChild(errorArchivo);
             }       
             main.appendChild(section);
+        }
+    }
+
+    crearMapaDinamico(archivos) {
+        if(this.supports) {
+            var archivo = archivos[0];
+            if (archivo && archivo.name.endsWith(".kml")) {
+                const lector = new FileReader();
+                lector.onload = (e) => {
+                    const div = document.createElement("div");
+                    const kml = new DOMParser().parseFromString(e.target.result, "application/xml");
+                    console.log(new XMLSerializer().serializeToString(kml));
+                    const namespace = "http://www.opengis.net/kml/2.2";
+                    const coordenadas = kml.getElementsByTagNameNS(namespace, "coordinates")[0].textContent.trim().split("\n").map(c => {
+                        var [longitud, latitud] = c.split(",").map(Number);
+                        return {lng: longitud, lat: latitud};
+                    })
+                    const opciones = {
+                        center: coordenadas[0],
+                        zoom: 13,
+                    };
+                    const mapa = new google.maps.Map(div, opciones);
+                    const linea = new google.maps.Polyline({
+                        strokeColor: "#ff0000",
+                        strokeWeight: 5,
+                        strokeOpacity: 0.7,
+                        path: coordenadas,
+                    });
+                    linea.setMap(mapa);
+                    const main = document.querySelector("main");
+                    main.appendChild(div);
+                };
+                lector.readAsText(archivo);
+            }
         }
     }
 }

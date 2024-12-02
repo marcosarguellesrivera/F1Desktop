@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css"/>
     <script src="js/circuito.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGGEsBmw72XKrpCtXAzTrtAqEKpKzd2kI"></script>
 </head>
 
 <body>
@@ -32,7 +33,10 @@
     <p><a href="index.html">F1 Desktop</a> >> Circuito</p>
     <main>
         <h2>Circuito</h2>
+        <h3>Archivo a leer</h3>
         <input type="file" onchange="circuito.leerArchivoTexto(this.files)"/>
+        <h3>Mapa dinámico del circuito</h3>
+        <input type="file" onchange="circuito.crearMapaDinamico(this.files)"/>
     </main>
     <script>
         const circuito = new Circuito();

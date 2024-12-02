@@ -24,7 +24,6 @@ class Noticias {
                 lector.onload = (evento) => {
                     const contenido = evento.target.result;
                     const lineas = contenido.split('\n');
-                    const main = document.querySelector("main");
                     lineas.forEach((linea) => {
                         if (!linea.trim()) return;
                         const [titular, cuerpo, autor] = linea.split('_');

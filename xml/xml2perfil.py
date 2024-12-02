@@ -25,7 +25,9 @@ def main():
 
 def prologo(archivo):
     archivo.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-    archivo.write('<svg xmlns="http://www.w3.org/2000/svg" version="2.0">\n')
+    archivo.write(f'<svg xmlns="http://www.w3.org/2000/svg" '
+                          f'width="{500}" height="{700}" '
+                          f'viewBox="0 0 {500} {700}" version="2.0">\n')
     archivo.write('<polyline points=\n"')
 
 def epilogo(archivo):
@@ -51,8 +53,8 @@ def escribirAlturas(raiz, archivo):
         if(distancia == None):
             print("No hay distancia")
             return
-        alturas.append(float(coordenadas.find("{http://www.uniovi.es}altura").text))
-        distancias.append(float(distancia.text) * 20 + 10)
+        alturas.append(float(coordenadas.find("{http://www.uniovi.es}altura").text) / 1.4)
+        distancias.append(float(distancia.text) * 25 + 10)
 
     total = 0
     for i in range(1, len(alturas)):
