@@ -11,7 +11,7 @@ class Record {
         $this->dbname = "records";
     }
 }
-echo "
+echo '
 <!DOCTYPE HTML>
 
 <html lang="es">
@@ -54,5 +54,5 @@ echo "
             </script>
         </main>
     </body>
-    </html>
-"?>
+    </html>'
+?>

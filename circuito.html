@@ -37,6 +37,8 @@
         <input type="file" onchange="circuito.leerArchivoTexto(this.files)"/>
         <h3>Mapa dinámico del circuito</h3>
         <input type="file" onchange="circuito.crearMapaDinamico(this.files)"/>
+        <h3>Archivo svg a mostrar</h3>
+        <input type="file" onchange="circuito.mostrarSvg(this.files)"/>
     </main>
     <script>
         const circuito = new Circuito();

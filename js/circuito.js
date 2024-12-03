@@ -85,4 +85,25 @@ class Circuito {
             }
         }
     }
+
+    mostrarSvg(archivos) {
+        if (this.supports) {
+            var archivo = archivos[0];
+            if (archivo && archivo.name.endsWith(".svg")) { 
+                const lector = new FileReader();
+                lector.onload = (e) => {
+                    const main = document.querySelector("main"); 
+                    const section = document.createElement("section");
+                    const img = document.createElement("img");
+                    img.src = e.target.result; 
+                    img.alt = "Vista previa del archivo SVG";
+                    img.style.maxWidth = "100%";
+                    img.style.height = "auto";
+                    section.appendChild(img);
+                    main.appendChild(section);
+                };
+                lector.readAsDataURL(archivo);
+            }
+        }
+    }
 }
