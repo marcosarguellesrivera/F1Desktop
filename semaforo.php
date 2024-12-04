@@ -4,6 +4,7 @@ class Record {
     private $user;
     private $pass;
     private $dbname;
+    
     public function __construct() {
         $this->server = "localhost";
         $this->user = "DBUSER2024";

@@ -66,10 +66,50 @@ class Semaforo {
         stop.disabled = true;
         main.classList.remove("unload");
         this.createRecordForm(time);
+        alert("si");
     }
 
     createRecordForm(time) {
-        const main = docment.querySelector("main");
-        
+        alert("si");
+        const main = document.querySelector("main");
+        main.appendChild("<button>Hola</button>");
+        const h3 = document.createElement("h3");
+        h3.textContent = "Guardar resultados";
+        const form = document.createElement("form");
+        form.attr("action", "#");
+        form.attr("method", "post");
+        const nameLabel = document.createElement("label");
+        nameLabel.textContent = "Nombre: ";
+        form.appendChild(nameLabel);
+        const nameInput = document.createElement("input");
+        nameInput.attr("type", "text");
+        nameInput.attr("name", "nombre");
+        form.appendChild(nameInput);
+        const surnameLabel = document.createElement("label");
+        surnameLabel.textContent = "Apellidos: ";
+        form.appendChild(surnameLabel);
+        const surnameInput = document.createElement("input");
+        surnameInput.attr("type", "text");
+        surnameInput.attr("name", "apellido");
+        form.appendChild(surnameInput);
+        const levelLabel = document.createElement("label");
+        levelLabel.textContent = "Nivel: ";
+        form.appendChild(levelLabel);
+        const levelInput = document.createElement("input");
+        levelInput.attr("type", "text");
+        levelInput.attr("name", "nivel");
+        levelInput.attr("value", this.difficulty);
+        levelInput.attr("readonly", true);
+        form.appendChild(levelInput);
+        const timeLabel = document.createElement("label");
+        timeLabel.textContent = "Tiempo de reacción: ";
+        form.appendChild(timeLabel);
+        const timeInput = document.createElement("input");
+        timeInput.attr("type", "text");
+        timeInput.attr("name", "nivel");
+        timeInput.attr("value", time);
+        timeInput.attr("readonly", true);
+        main.appendChild(h3);
+        main.appendChild(form);
     }
 }
