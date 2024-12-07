@@ -64,7 +64,7 @@ class Pais {
                 let contador = 0;
                 for (let fecha in diasPronostico) {
                     if (contador >= 5) break;
-
+                    contador++;
                     const temps = diasPronostico[fecha].temps;
                     const humedad = diasPronostico[fecha].humedad;
                     const icono = diasPronostico[fecha].icono;
@@ -85,24 +85,23 @@ class Pais {
                             <table>
                                 <thead>
                                     <tr>
-                                        <th id="tmax" scope="col">Temp. Máx:</th>
-                                        <th id="tmin" scope="col">Temp. Mín:</th>
-                                        <th id="humedad" scope="col">Humedad:</th>
-                                        <th id="lluvia" scope="col">Lluvia:</th>
+                                        <th id="tmax${contador}" scope="col">Temp. Máx:</th>
+                                        <th id="tmin${contador}" scope="col">Temp. Mín:</th>
+                                        <th id="humedad${contador}" scope="col">Humedad:</th>
+                                        <th id="lluvia${contador}" scope="col">Lluvia:</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td headers="tmax">${tempMax} °C</td>
-                                        <td headers="tmin">${tempMin} °C</td>
-                                        <td headers="humedad">${humedad}%</td>
-                                        <td headers="lluvia">${lluvia}</td>
+                                        <td headers="tmax${contador}">${tempMax} °C</td>
+                                        <td headers="tmin${contador}">${tempMin} °C</td>
+                                        <td headers="humedad${contador}">${humedad}%</td>
+                                        <td headers="lluvia${contador}">${lluvia}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </article>
                     `);
-                    contador++;
                 }
             },
             error: function() {

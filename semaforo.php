@@ -4,12 +4,44 @@ class Record {
     private $user;
     private $pass;
     private $dbname;
+    private $db;
     
     public function __construct() {
         $this->server = "localhost";
         $this->user = "DBUSER2024";
         $this->pass = "DBPSWD2024";
         $this->dbname = "records";
+    }
+
+    public function createDatabaseAndTable() {
+        $this->createConection();
+        $this->executeQuery("CREATE DATABASE IF NOT EXISTS records");
+        $this->db->select_db("records");
+        $this->db->query("CREATE TABLE IF NOT EXISTS Registro (
+            nombre VARCHAR(32) NOT NULL,
+            apellidos VARCHAR(32) NOT NULL,
+            nivel VARCHAR(32) NOT NULL,
+            tiempo DOUBLE(10,3) NOT NULL);");
+    }
+
+    public function insertRecord($name, $surnames, $level, $time) {
+        $this->createConection();
+        $this->db->select_db("records");
+        $ps = $this->db->prepare("INSERT INTO Registro(nombre, apellidos, nivel, tiempo) VALUES ('$name', '$surnames', '$level', '$time')");
+        $ps->execute();
+        $ps->close();
+    }
+
+    public function createConection() {
+        $this->db = new mysqli($this->server, $this->user, $this->pass);
+    }
+
+    public function closeConection() {
+        $this->db->close();
+    }
+
+    public function executeQuery($query) {
+        return $this->db->query($query);
     }
 }
 echo '

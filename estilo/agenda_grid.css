@@ -22,3 +22,14 @@ h3 {
 main {
     text-align: center;
 }
+
+h4 {
+    font-weight: bold;
+    background-color: #ffffff;
+    font-size: 1.25em;
+    text-align: center;
+    color: #000000;
+    border-bottom: 0.3rem solid #c70039;
+    padding-bottom: 0.5em;
+    margin: 1em 0; 
+}

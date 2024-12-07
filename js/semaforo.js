@@ -14,19 +14,19 @@ class Semaforo {
         h2.textContent = "Semáforo";
         main.appendChild(h2);
         const section = document.createElement("section");
-        section.classList.add("container");
+        const h3 = document.createElement("h3");
+        h3.textContent = "Juego de reacción";
+        section.appendChild(h3);
         for(let i = 0; i < this.lights; i++) {
             var div = document.createElement("div");
             section.appendChild(div);
         }
         var buttonStart = document.createElement("button");
         buttonStart.textContent = "Arranque";
-        buttonStart.classList.add("start");
         buttonStart.addEventListener("click", this.initSequence.bind(this));
         section.appendChild(buttonStart);
         var buttonStop = document.createElement("button");
         buttonStop.textContent = "Reacción";
-        buttonStop.classList.add("stop");
         buttonStop.addEventListener("click", this.stopReaction.bind(this));
         buttonStop.disabled = true;
         this.p = document.createElement("p");
@@ -39,7 +39,7 @@ class Semaforo {
     initSequence() {
         const main = document.querySelector("main");
         main.classList.add("load");
-        const button = document.querySelector(".start");
+        const button = document.querySelectorAll("button")[0];
         button.disabled = true;
         setTimeout(() =>{
             this.unload_moment = new Date();
@@ -51,7 +51,7 @@ class Semaforo {
         const main = document.querySelector("main");
         main.classList.remove("load");
         main.classList.add("unload");
-        const button = document.querySelector(".stop");
+        const button = document.querySelectorAll("button")[1];
         button.disabled = false;
     }
 
@@ -60,9 +60,9 @@ class Semaforo {
         const time = ((this.clic_moment - this.unload_moment) / 1000).toFixed(3);
         this.p.textContent = "Tiempo de reacción: " + time + "s";
         const main = document.querySelector("main");
-        const start = document.querySelector(".start");
+        const start = document.querySelectorAll("button")[0];
         start.disabled = false;
-        const stop = document.querySelector(".stop");
+        const stop = document.querySelectorAll("button")[1];
         stop.disabled = true;
         main.classList.remove("unload");
         this.createRecordForm(time);
@@ -70,7 +70,7 @@ class Semaforo {
 
     createRecordForm(time) {
         const main = document.querySelector("main");
-        var section = document.querySelector("section");
+        var section = document.querySelectorAll("section")[1];
         if(section) main.removeChild(section);
         section = document.createElement("section");
         const h3 = document.createElement("h3");
@@ -80,36 +80,47 @@ class Semaforo {
         form.method = "post";
         const nameLabel = document.createElement("label");
         nameLabel.textContent = "Nombre: ";
+        nameLabel.for = "nameInput";
         form.appendChild(nameLabel);
         const nameInput = document.createElement("input");
         nameInput.type = "text";
         nameInput.name =  "nombre";
+        nameInput.id = "nameInput";
         form.appendChild(nameInput);
         const surnameLabel = document.createElement("label");
         surnameLabel.textContent = "Apellidos: ";
+        surnameLabel.for = "surnameInput";
         form.appendChild(surnameLabel);
         const surnameInput = document.createElement("input");
         surnameInput.type = "text";
         surnameInput.name = "apellido";
+        surnameInput.id = "surnameInput";
         form.appendChild(surnameInput);
         const levelLabel = document.createElement("label");
         levelLabel.textContent = "Nivel: ";
+        levelLabel.for = "levelInput";
         form.appendChild(levelLabel);
         const levelInput = document.createElement("input");
         levelInput.type = "text";
         levelInput.name = "nivel";
         levelInput.value = this.difficulty;
         levelInput.readOnly = true;
+        levelInput.id = "levelInput";
         form.appendChild(levelInput);
         const timeLabel = document.createElement("label");
         timeLabel.textContent = "Tiempo de reacción: ";
+        timeLabel.for = "timeInput";
         form.appendChild(timeLabel);
         const timeInput = document.createElement("input");
         timeInput.type = "text";
         timeInput.name = "nivel";
         timeInput.value = time + " s";
         timeInput.readOnly = true;
+        timeInput.id = "timeInput";
         form.appendChild(timeInput);
+        const button = document.createElement("button");
+        button.textContent = "Enviar";
+        form.appendChild(button);
         section.appendChild(h3);
         section.appendChild(form);
         main.appendChild(section);

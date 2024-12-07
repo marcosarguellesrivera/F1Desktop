@@ -14,13 +14,54 @@ div {
     color: #000000;   /* Fondo semitransparente */
 }
 
+/*Especificidad: (0, 0, 1)*/
+form {
+    display: grid;
+    grid-template-columns: max-content 1fr; /* Columna 1 para label, Columna 2 para input */
+    column-gap: 1em; /* Espaciado entre label e input */
+    align-items: center; /* Alinea verticalmente */
+    margin: 0 15em;
+}
+
+form > button {
+    grid-column: 1 / -1; /* Hace que el botón ocupe ambas columnas */
+    justify-self: center; /* Centra horizontalmente el botón */
+    margin-top: 1em;
+    align-self: center;
+    background-color: #c70039;
+    padding: 0.5em 1em;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+section > h3 {
+    grid-column: 1 / -1;
+    margin: 0;
+}
+
+/*Especificidad: (0, 0, 1)*/
+input {
+    justify-self: right; /* Alinea los inputs a la derecha */
+    width: 10em; /* Opcional: asegura un ancho consistente para los inputs */
+    margin-top: 1em;
+}
+
+/*Especificidad: (0, 0, 1)*/
+label {
+    text-align: left; /* Alinea texto de los labels */
+    margin-top: 1em;
+}
+
 /*Especificidad: (0, 0, 1) */
 main p {
     text-align: center;
 }
 
 /*Especificidad: (0, 1, 0) */
-.container {
+h2 + section {
     display: grid;
     justify-content: center;
     margin: 3em;
@@ -31,42 +72,42 @@ main p {
 }
 
 /*Especificidad: (0, 2, 1) */
-.load .container div {
+.load h2 + section div {
     animation: changeBackground 1s forwards;
 }
 
-/*Especificidad: (0, 3, 1) */
-.load > .container > div:nth-child(1) {
+
+.load > h2 + section > div:nth-of-type(1) {
     animation-delay: 0ms;
 }
 
 /*Especificidad: (0, 3, 1) */
-.load > .container > div:nth-child(2) {
+.load > h2 + section > div:nth-of-type(2) {
     animation-delay: 500ms;
 }
 
 /*Especificidad: (0, 3, 1) */
-.load > .container > div:nth-child(3) {
+.load > h2 + section > div:nth-of-type(3) {
     animation-delay: 1000ms;
 }
 
 /*Especificidad: (0, 3, 1) */
-.load > .container > div:nth-child(4) {
+.load > h2 + section > div:nth-of-type(4) {
     animation-delay: 1500ms;
 }
 
 /*Especificidad: (0, 1, 0) */
-.start {
+div + button {
     grid-column: 2 / 3;
 }
 
 /*Especificidad: (0, 1, 0) */
-.stop {
+button + button {
     grid-column: 3 / 4;
 }
 
 /*Especificidad: (0, 2, 1) */
-.unload .container div {
+.unload h2 + section div {
     animation: out forwards;
 }
 

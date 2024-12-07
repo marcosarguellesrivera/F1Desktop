@@ -18,28 +18,32 @@ class Agenda {
                 const main = document.querySelector("main");
                 const firstSection = document.querySelector("section");
                 if (firstSection) main.removeChild(firstSection);
+                var contador = 1;
                 races.forEach(function(race) {
                     var article = document.createElement("article");
+                    var h4 = document.createElement("h4");
+                    h4.textContent = race.raceName;
+                    article.appendChild(h4);
                     var table = document.createElement("table");
                     table.innerHTML = `
-                        <caption>${race.raceName}</caption>
                         <thead>
                             <tr>
-                                <th id="circuit" scope="col">Circuito</th>
-                                <th id="date" scope="col">Fecha y hora</th>
-                                <th id="coords" scope="col">Coordenadas</th>
+                                <th id="circuit${contador}" scope="col">Circuito</th>
+                                <th id="date${contador}" scope="col">Fecha y hora</th>
+                                <th id="coords${contador}" scope="col">Coordenadas</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                            <td headers="circuit">${race.Circuit.circuitName}</td>
-                            <td headers="date">${race.date + " - " + (race.time || "No hay hora")}</td>
-                            <td headers="coords">${race.Circuit.Location.lat + ", " + race.Circuit.Location.long}</td>
+                            <td headers="circuit${contador}">${race.Circuit.circuitName}</td>
+                            <td headers="date${contador}">${race.date + " - " + (race.time || "No hay hora")}</td>
+                            <td headers="coords${contador}">${race.Circuit.Location.lat + ", " + race.Circuit.Location.long}</td>
                             </tr>
                         </tbody>
                         `;
                     article.append(table);
                     section.append(article);
+                    contador++;
                 });
                 
                 main.append(section);
