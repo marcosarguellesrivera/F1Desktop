@@ -29,6 +29,7 @@ nav {
     justify-content: space-around; /* Espaciado equidistante */
     align-items: center; /* Centra verticalmente los enlaces */
     width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 1em;
 }
 
 /*Especificidad: (0, 0, 3) */
@@ -45,5 +46,7 @@ header nav a {
     header nav {
         flex-direction: column;
         width: auto;
+        justify-content: space-around;
+        gap: 1rem;
     }
 }

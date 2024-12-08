@@ -230,7 +230,7 @@ video {
 @media (max-width: 800px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
     /*Especificidad: (0, 0, 0) */
     * {
-        font-size: 0.75em;
+        font-size: 90%;
     }
     
     /*Especificidad: (0, 0, 1) */
@@ -247,6 +247,6 @@ video {
 
     /*Especificidad: (0, 0, 0) */
     *{
-        font-size: 0.6em;
+        font-size: 70%;
     }
 }

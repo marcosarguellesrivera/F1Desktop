@@ -92,7 +92,6 @@ if (count($_POST) > 0) {
     $mensaje = "no";
 }
 
-echo "
 <!DOCTYPE HTML>
 
 <html lang='es'>
@@ -137,5 +136,5 @@ echo "
             <p>$mansaje</p>
         </section>
     </body>
-    </html>'
+    </html>
 ?>
