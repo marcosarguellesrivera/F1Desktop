@@ -283,6 +283,10 @@ video {
     h1 a, nav a {
         font-size: 0.6em;
     }
+    
+    h3 {
+        font-size: 60%;
+    }
 
     /*Especificidad: (0, 0, 1) */
     header {

@@ -23,7 +23,7 @@ form {
     margin: 0 15em;
 }
 
-form > button {
+input[type="submit"] {
     grid-column: 1 / -1; /* Hace que el botón ocupe ambas columnas */
     justify-self: center; /* Centra horizontalmente el botón */
     margin-top: 1em;

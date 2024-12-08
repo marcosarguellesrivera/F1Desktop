@@ -4,7 +4,7 @@ class Semaforo {
         this.lights = 4;
         this.unload_moment = null;
         this.clic_moment = null;
-        this.difficulty = this.levels[Math.floor(Math.random() * this.levels.length)];
+        this.difficulty = Math.floor(Math.random() * this.levels.length);
         this.createStructure();
     }
 
@@ -44,7 +44,7 @@ class Semaforo {
         setTimeout(() =>{
             this.unload_moment = new Date();
             this.endSequence();
-        }, this.difficulty * 100 + 2000);
+        }, this.levels[this.difficulty] * 100 + 2000);
     }
     
     endSequence() {
@@ -78,6 +78,7 @@ class Semaforo {
         const form = document.createElement("form");
         form.action = "#";
         form.method = "post";
+        form.name = "enviar";
         const nameLabel = document.createElement("label");
         nameLabel.textContent = "Nombre: ";
         nameLabel.for = "nameInput";
@@ -103,7 +104,9 @@ class Semaforo {
         const levelInput = document.createElement("input");
         levelInput.type = "text";
         levelInput.name = "nivel";
-        levelInput.value = this.difficulty;
+        if(this.difficulty === 0) levelInput.value = "Difícil";
+        else if(this.difficulty === 1) levelInput.value = "Intermedio";
+        else levelInput.value = "Fácil";
         levelInput.readOnly = true;
         levelInput.id = "levelInput";
         form.appendChild(levelInput);
@@ -118,8 +121,10 @@ class Semaforo {
         timeInput.readOnly = true;
         timeInput.id = "timeInput";
         form.appendChild(timeInput);
-        const button = document.createElement("button");
-        button.textContent = "Enviar";
+        const button = document.createElement("input");
+        button.type = "submit";
+        button.name = "enviar";
+        button.value = "Enviar";
         form.appendChild(button);
         section.appendChild(h3);
         section.appendChild(form);
