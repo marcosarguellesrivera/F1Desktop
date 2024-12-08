@@ -70,7 +70,7 @@ class Record {
 }
 
 $record = new Record();
-$topRecords = "suuuu ";
+$topRecords = "";
 $mensaje = "nada";
 if (count($_POST) > 0) {
     $mensaje = "no";

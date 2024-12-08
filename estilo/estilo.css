@@ -110,41 +110,7 @@ h4 {
     text-align: center;
 }
 
-/*Especificidad: (0, 0, 1) */
-header {
-    background-color: #C70039;
-    color: #ffffff;
-    padding: 1em;
-}
 
-/*Especificidad: (0, 0, 2) */
-header h1 {
-    display: block;
-    text-align: center;
-    margin-bottom: 0.5em;
-}
-
-/*Especificidad: (0, 1, 2) */
-header a:hover {
-    background-color: #C70039;
-    color: #000000;
-}
-
-/*Especificidad: (0, 0, 2) */
-header nav {
-    align-items: center;
-    display: grid; 
-    grid-template-columns: repeat(7, 1fr); 
-}
-
-/*Especificidad: (0, 0, 3) */
-header nav a {
-    background-color: #C70039;
-    color: #ffffff; 
-    text-decoration: none;
-    text-align: center;
-    font-size: 1.25em;
-}
 
 /*Especificidad: (0, 0, 1) */
 input {
@@ -262,8 +228,8 @@ video {
 }
 
 @media (max-width: 800px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
-    /*Especificidad: (0, 0, 2) */
-    h1 a, nav a {
+    /*Especificidad: (0, 0, 0) */
+    * {
         font-size: 0.75em;
     }
     
@@ -279,17 +245,8 @@ video {
         visibility: hidden;
     }
 
-    /*Especificidad: (0, 0, 2) */
-    h1 a, nav a {
+    /*Especificidad: (0, 0, 0) */
+    *{
         font-size: 0.6em;
-    }
-    
-    h3 {
-        font-size: 60%;
-    }
-
-    /*Especificidad: (0, 0, 1) */
-    header {
-        padding: 60%;
     }
 }

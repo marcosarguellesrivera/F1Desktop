@@ -1,17 +1,49 @@
 /*Marcos Argüelles Rivera UO295029*/
 
-/*Especificidad: (0, 0, 1) */
-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    row-gap: 1em;           
-    column-gap: 0;
-}
-
 /*Especificidad: (0, 0, 2) */
 header > h1 {
-    flex-basis: 100%;
     text-align: center;
+}
+
+/*Especificidad: (0, 0, 1) */
+header {
+    background-color: #C70039;
+    color: #ffffff;
+    padding: 1em;
+    display: flex;
+    flex-direction: column; /* Estructura en columna por defecto */
+    justify-content: center; /* Centra verticalmente el contenido */
+    align-items: center;
+}
+
+/*Especificidad: (0, 1, 2) */
+header a:hover {
+    background-color: #C70039;
+    color: #000000;
+}
+
+/*Especificidad: (0, 0, 1) */
+nav {
+    display: flex;
+    flex-direction: row; /* Los enlaces están en fila por defecto */
+    justify-content: space-around; /* Espaciado equidistante */
+    align-items: center; /* Centra verticalmente los enlaces */
+    width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+/*Especificidad: (0, 0, 3) */
+header nav a {
+    background-color: #C70039;
+    color: #ffffff; 
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.25em;
+}
+
+@media (max-width: 465px) {
+
+    header nav {
+        flex-direction: column;
+        width: auto;
+    }
 }
