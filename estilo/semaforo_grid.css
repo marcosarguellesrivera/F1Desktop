@@ -1,5 +1,9 @@
 /*Marcos Argüelles Rivera UO295029*/
 
+aside {
+    max-width: 60em;
+}
+
 /*Especificidad: (0, 0, 1) */
 button {
     cursor: pointer;
