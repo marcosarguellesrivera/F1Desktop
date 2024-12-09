@@ -1,98 +1,4 @@
-<?php
-class Record {
-    private $server;
-    private $user;
-    private $pass;
-    private $dbname;
-    private $db;
-    
-    public function __construct() {
-        $this->server = "localhost";
-        $this->user = "DBUSER2024";
-        $this->pass = "DBPSWD2024";
-        $this->dbname = "records";
-    }
 
-    public function createDatabaseAndTable() {
-        $this->createConection();
-        $this->executeQuery("CREATE DATABASE IF NOT EXISTS records COLLATE utf8_spanish_ci");
-        $this->db->select_db("records");
-        $this->db->query("CREATE TABLE IF NOT EXISTS Registro (
-            nombre VARCHAR(32) NOT NULL,
-            apellidos VARCHAR(32) NOT NULL,
-            nivel VARCHAR(32) NOT NULL,
-            tiempo DOUBLE(10,3) NOT NULL);");
-    }
-
-    public function insertRecord($name, $surnames, $level, $time) {
-        $this->createConection();
-        $this->db->select_db("records");
-        $ps = $this->db->prepare("INSERT INTO Registro(nombre, apellidos, nivel, tiempo) VALUES ('$name', '$surnames', '$level', '$time')");
-        $ps->execute();
-        $ps->close();
-    }
-
-    public function getTopRecords($level) {
-        $this->db = new mysqli($this->server, $this->user, $this->pass);
-        $this->db->select_db("records");    
-        $ps = $this->db->prepare("SELECT nombre, apellidos, tiempo FROM Registro WHERE nivel = ? ORDER BY tiempo LIMIT 10");
-        $ps->bind_param("s", $level);
-        $ps->execute();
-        $result = $ps->get_result();
-    
-        $list = "";
-        if ($result->num_rows > 0) {
-            $list .= "<ol>";
-            while ($row = $result->fetch_assoc()) {
-                $list .= "<li>";
-                $list .= $row["nombre"] . " " . $row["apellidos"] . " - " . $row["tiempo"];
-                $list .= "</li>";
-            }
-            $list .= "</ol>";
-        } else {
-            $list .= "<p>No hay récords para este nivel</p>";
-        }
-        $stmt->close();
-        return $list;
-    }
-
-    public function createConection() {
-        $this->db = new mysqli($this->server, $this->user, $this->pass);
-    }
-
-    public function closeConection() {
-        $this->db->close();
-    }
-
-    public function executeQuery($query) {
-        return $this->db->query($query);
-    }
-}
-
-$record = new Record();
-$topRecords = "";
-$mensaje = "nada";
-if (count($_POST) > 0) {
-    $mensaje = "no";
-    $record = $_SESSION['database'];
-
-    if (isset($_POST['enviar'])) {
-        $name = $_POST['nombre'];
-        $surnames = $_POST['apellidos'];
-        $level = $_POST['nivel'];
-        $time = $_POST['tiempo'];
-
-        $record->insertRecord($name, $surnames, $level, $time);
-        $topRecords = $db->getTopRecords($level);
-    
-    }
-    $record->closeConection();
-    $_SESSION['database'] = $record;
-} else {
-    $mensaje = "no";
-}
-
-<!DOCTYPE HTML>
 
 <html lang='es'>
     <head>
@@ -107,9 +13,75 @@ if (count($_POST) > 0) {
         <link rel='stylesheet' type='text/css' href='estilo/estilo.css' />
         <link rel='stylesheet' type='text/css' href='estilo/layout.css'/>
         <link rel='stylesheet' type='text/css' href='estilo/semaforo_grid.css'/>
-        <script src='js/semaforo.js'></p>
+        <script src='js/semaforo.js'></script>
     </head>
     <body>
+        <?php
+        class Record {
+            private $server;
+            private $user;
+            private $pass;
+            private $dbname;
+            private $db;
+            
+            public function __construct() {
+                $this->server = "localhost";
+                $this->user = "DBUSER2024";
+                $this->pass = "DBPSWD2024";
+                $this->dbname = "records";
+                $this->createDatabase();
+            }
+
+            public function createDatabase() {
+                $this->createConection();
+                $this->db->query("CREATE DATABASE IF NOT EXISTS " . $this->dbname . " COLLATE utf8_spanish_ci");
+                $this->db->select_db($this->dbname);
+                $this->db->query("CREATE TABLE IF NOT EXISTS Registro (
+                    nombre VARCHAR(32) NOT NULL,
+                    apellidos VARCHAR(32) NOT NULL,
+                    nivel VARCHAR(32) NOT NULL,
+                    tiempo FLOAT(10) NOT NULL);");
+            }
+
+            public function insertRecord($name, $surnames, $level, $time) {
+                $this->createConection();
+                $this->db->select_db("records");
+                $ps = $this->db->prepare("INSERT INTO Registro(nombre, apellidos, nivel, tiempo) VALUES ('$name', '$surnames', '$level', '$time')");
+                $ps->execute();
+                $ps->close();
+            }
+
+            public function getTopRecords($level) {
+                $this->db->select_db($this->dbname);    
+                $ps = $this->db->prepare("SELECT nombre, apellidos, tiempo FROM Registro WHERE nivel = ? ORDER BY tiempo ASC LIMIT 10");
+                $ps->bind_param("s", $level);
+                $ps->execute();
+                $result = $ps->get_result();
+            
+                $list = "<p>No hay récords para este nivel</p>";
+                if ($result->num_rows > 0) {
+                    $list = "<ol>";
+                    while ($row = $result->fetch_assoc()) {
+                        $list .= "<li>";
+                        $list .= $row["nombre"] . " " . $row["apellidos"] . " - " . $row["tiempo"] . "s";
+                        $list .= "</li>";
+                    }
+                    $list .= "</ol>";
+                }
+                echo '<h3>Mejores tiempos - Nivel ' . $level . '</h3>';
+                echo $list;
+                $ps->close();
+            }
+
+            public function createConection() {
+                $this->db = new mysqli($this->server, $this->user, $this->pass);
+            }
+
+            public function closeConection() {
+                $this->db->close();
+            }
+        }
+        ?>
         <!-- Datos con el contenidos que aparece en el navegador -->
         <header>
             <h1><a href='index.html'>F1 Desktop</a></h1>
@@ -127,14 +99,24 @@ if (count($_POST) > 0) {
         <main>
             <nav>
                 <a href='memoria.html'>Memoria</a>
+                <a href='semaforo.php'>Semáforo</a>
             </nav>
             <script>
                 semaforo = new Semaforo();
             </script>
+            <?php
+                $db = new Record();
+                if (count($_POST) > 0) {
+                    if (isset($_POST['enviar'])) {
+                        $name = $_POST['nombre'];
+                        $surnames = $_POST['apellidos'];
+                        $level = $_POST['nivel'];
+                        $time = (float) $_POST['tiempo'];
+                        $db->insertRecord($name, $surnames, $level, $time);
+                        $db->getTopRecords($level);
+                    }
+                }
+            ?>
         </main>
-        <section>
-            <p>$mansaje</p>
-        </section>
     </body>
     </html>
-?>

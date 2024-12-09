@@ -94,7 +94,7 @@ class Semaforo {
         form.appendChild(surnameLabel);
         const surnameInput = document.createElement("input");
         surnameInput.type = "text";
-        surnameInput.name = "apellido";
+        surnameInput.name = "apellidos";
         surnameInput.id = "surnameInput";
         form.appendChild(surnameInput);
         const levelLabel = document.createElement("label");
@@ -116,8 +116,8 @@ class Semaforo {
         form.appendChild(timeLabel);
         const timeInput = document.createElement("input");
         timeInput.type = "text";
-        timeInput.name = "nivel";
-        timeInput.value = time + " s";
+        timeInput.name = "tiempo";
+        timeInput.value = time;
         timeInput.readOnly = true;
         timeInput.id = "timeInput";
         form.appendChild(timeInput);
