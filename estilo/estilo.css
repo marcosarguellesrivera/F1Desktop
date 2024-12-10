@@ -26,7 +26,7 @@ main > aside > article > button {
     border-radius: 50%;
     z-index: 10;
     cursor: pointer;
-    background-color: #C70039;
+    background-color: #B30033;
     font-size: 1em;
     display: flex;
     flex-direction: column;
@@ -48,7 +48,7 @@ main > aside > article > button:nth-of-type(1) {
 /*Especificidad: (0, 1, 0) */
 .active {
     color: #000000;
-    background-color: #C70039;
+    background-color: #B30033;
     font-weight: bold;
 }
 
@@ -63,7 +63,7 @@ a {
 /*Especificidad: (0, 1, 1) */
 a:hover {
     background-color: #ffffff;
-    color: #c70039; 
+    color: #B30033; 
 }
 
 /*Especificidad (0, 0, 1) */
@@ -100,7 +100,7 @@ caption {
     font-size: 1.25em;
     text-align: center;
     color: #000000;
-    border-bottom: 0.3rem solid #c70039;
+    border-bottom: 0.3rem solid #B30033;
     padding-bottom: 0.5em;
     margin: 1em 0; 
 }
@@ -110,7 +110,7 @@ dl {
     margin: 1em;
     padding: 1em;
     background-color: #ffffff;
-    border: 0.2rem solid #c70039;
+    border: 0.2rem solid #B30033;
     border-radius: 1rem;
     color: #000000;
 }
@@ -129,7 +129,7 @@ footer {
 
 /*Especificidad: (0, 0, 2) */
 h1 a {
-    background-color: #C70039;
+    background-color: #B30033;
     color: #ffffff; 
     text-decoration: none;
     font-size: 1.25em;
@@ -154,8 +154,6 @@ h3 {
 h4 {
     text-align: center;
 }
-
-
 
 /*Especificidad: (0, 0, 1) */
 input {
@@ -186,6 +184,19 @@ main > article {
 }
 
 /*Especificidad: (0, 0, 2) */
+main > button, label + button { 
+    align-self: center;
+    margin-top: 0.5em;
+    background-color: #B30033;
+    padding: 1em 1.5em;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/*Especificidad: (0, 0, 2) */
 main > div {
     display: block;
     height: 25em;
@@ -207,7 +218,7 @@ ol {
     padding-left: 3em; 
     color: #000000;
     background-color: #ffffff; 
-    border-left: 0.3rem solid #c70039;
+    border-left: 0.3rem solid #B30033;
 }
 
 /*Especificidad: (0, 0, 2) */
@@ -246,7 +257,7 @@ td {
 
 /*Especificidad: (0, 0, 1) */
 th {
-    background-color: #c70039;
+    background-color: #B30033;
     color: #ffffff;
     padding: 1em;
     text-align: center;
@@ -260,7 +271,7 @@ ul {
     padding-left: 1em;
     color: #000000;
     background-color: #ffffff;
-    border-left: 0.3rem solid #c70039; 
+    border-left: 0.3rem solid #B30033; 
 }
 
 /*Especificidad: (0, 0, 1) */

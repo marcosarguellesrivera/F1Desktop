@@ -79,7 +79,7 @@ class Pais {
                         <article>
                             <h3>${fecha}</h3>
                             <figure>
-                                <img src="https://openweathermap.org/img/wn/${icono}@2x.png" alt="Icono del clima">
+                                <img src="https://openweathermap.org/img/wn/${icono}@2x.png" alt="Icono del clima ${contador}">
                                 <figcaption>${descripcionClima}</figcaption>
                             </figure>
                             <table>

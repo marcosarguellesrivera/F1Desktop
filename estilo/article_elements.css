@@ -29,12 +29,12 @@ article h3 {
     text-align: center;
 }
 
-/*Especificidad: (0, 1, 1) y (0, 0, 1) */
-input[type="text"],
-textarea {
+/*Especificidad: (0, 0, 3) y (0, 0, 3) */
+section > label > input,
+section > label > textarea {
     width: 100%;
     padding: 0.8em;
-    margin-bottom: 1em;
+    margin: 1em;
     box-sizing: border-box;
     border: 0.25em solid #000;
     border-radius: 0.4em;
@@ -49,19 +49,6 @@ section {
 }
 
 /*Especificidad: (0, 0, 2) */
-section button { 
-    align-self: center;
-    margin-top: 0.5em;
-    background-color: #c70039;
-    padding: 1em 1.5em;
-    border: none;
-    font-size: 1em;
-    cursor: pointer;
-    font-weight: bold;
-    color: #ffffff;
-}
-
-/*Especificidad: (0, 0, 2) */
 section h3 {
     margin-top: 0em;
     width: 100%;
@@ -72,6 +59,7 @@ section h3 {
 section label {
     font-weight: bold;
     font-size: 1em;
+    width: 100%;
 }
 
 /*Especificidad: (0, 0, 2) */

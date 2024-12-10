@@ -7,7 +7,7 @@ header > h1 {
 
 /*Especificidad: (0, 0, 1) */
 header {
-    background-color: #C70039;
+    background-color: #B30033;
     color: #ffffff;
     padding: 1em;
     display: flex;
@@ -18,7 +18,7 @@ header {
 
 /*Especificidad: (0, 1, 2) */
 header a:hover {
-    background-color: #C70039;
+    background-color: #B30033;
     color: #000000;
 }
 
@@ -34,7 +34,7 @@ nav {
 
 /*Especificidad: (0, 0, 3) */
 header nav a {
-    background-color: #C70039;
+    background-color: #B30033;
     color: #ffffff; 
     text-decoration: none;
     text-align: center;

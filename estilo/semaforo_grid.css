@@ -32,7 +32,7 @@ input[type="submit"] {
     justify-self: center; /* Centra horizontalmente el botón */
     margin-top: 1em;
     align-self: center;
-    background-color: #c70039;
+    background-color: #B30033;
     padding: 0.5em 1em;
     border: none;
     font-size: 1em;
@@ -117,7 +117,7 @@ button + button {
 
 @keyframes changeBackground {
     100% {
-        background-color: #C70039;
+        background-color: #B30033;
     }
 }
 

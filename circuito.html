@@ -34,11 +34,17 @@
     <main>
         <h2>Circuito</h2>
         <h3>Archivo a leer</h3>
-        <input type="file" onchange="circuito.leerArchivoTexto(this.files)"/>
+        <label>
+            <input type="file" onchange="circuito.leerArchivoTexto(this.files)"/>
+        </label>
         <h3>Mapa dinámico del circuito</h3>
-        <input type="file" onchange="circuito.crearMapaDinamico(this.files)"/>
+        <label>
+            <input type="file" onchange="circuito.crearMapaDinamico(this.files)"/>
+        </label>
         <h3>Archivo svg a mostrar</h3>
-        <input type="file" onchange="circuito.mostrarSvg(this.files)"/>
+        <label>
+            <input type="file" onchange="circuito.mostrarSvg(this.files)"/>
+        </label>
     </main>
     <script>
         const circuito = new Circuito();

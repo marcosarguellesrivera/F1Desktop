@@ -33,15 +33,18 @@
     <p><a href="index.html">F1 Desktop</a> >> Noticias</p>
     <main>
         <h2>Noticias</h2>
-        <input type="file" onchange="noticias.readInputFile(this.files)"/>
+        <label><input type="file" onchange="noticias.readInputFile(this.files)"/></label>
         <section>
             <h3> Nueva noticia </h3>
-            <label>Titular:</label>
-            <input type="text">
-            <label>Contenido:</label>
-            <textarea> </textarea>
-            <label>Autor:</label>
-            <input type="text">
+            <label>Titular:
+                <input type="text">
+            </label>
+            <label>Contenido:
+                <textarea> </textarea>
+            </label>
+            <label>Autor:
+                <input type="text">
+            </label>
             <button onclick="noticias.agregarNoticiaFormulario()">Agregar noticia</button>
         </section>
     </main>
