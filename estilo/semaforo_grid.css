@@ -24,12 +24,12 @@ form {
     grid-template-columns: max-content 1fr; /* Columna 1 para label, Columna 2 para input */
     column-gap: 1em; /* Espaciado entre label e input */
     align-items: center; /* Alinea verticalmente */
-    margin: 0 15em;
+    margin: 1em 15em;
 }
 
-input[type="submit"] {
-    grid-column: 1 / -1; /* Hace que el botón ocupe ambas columnas */
-    justify-self: center; /* Centra horizontalmente el botón */
+input + input {
+    grid-column: 1 / -1;
+    justify-self: center;
     margin-top: 1em;
     align-self: center;
     background-color: #B30033;
@@ -56,7 +56,7 @@ input {
 /*Especificidad: (0, 0, 1)*/
 label {
     text-align: left; /* Alinea texto de los labels */
-    margin-top: 1em;
+    margin: 1em 0;
 }
 
 /*Especificidad: (0, 0, 1) */

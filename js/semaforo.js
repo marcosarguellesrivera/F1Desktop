@@ -81,7 +81,7 @@ class Semaforo {
         form.name = "enviar";
         const nameLabel = document.createElement("label");
         nameLabel.textContent = "Nombre: ";
-        nameLabel.for = "nameInput";
+        nameLabel.htmlFor = "nameInput";
         form.appendChild(nameLabel);
         const nameInput = document.createElement("input");
         nameInput.type = "text";
@@ -90,7 +90,7 @@ class Semaforo {
         form.appendChild(nameInput);
         const surnameLabel = document.createElement("label");
         surnameLabel.textContent = "Apellidos: ";
-        surnameLabel.for = "surnameInput";
+        surnameLabel.htmlFor = "surnameInput";
         form.appendChild(surnameLabel);
         const surnameInput = document.createElement("input");
         surnameInput.type = "text";
@@ -99,7 +99,7 @@ class Semaforo {
         form.appendChild(surnameInput);
         const levelLabel = document.createElement("label");
         levelLabel.textContent = "Nivel: ";
-        levelLabel.for = "levelInput";
+        levelLabel.htmlFor = "levelInput";
         form.appendChild(levelLabel);
         const levelInput = document.createElement("input");
         levelInput.type = "text";
@@ -112,7 +112,7 @@ class Semaforo {
         form.appendChild(levelInput);
         const timeLabel = document.createElement("label");
         timeLabel.textContent = "Tiempo de reacción: ";
-        timeLabel.for = "timeInput";
+        timeLabel.htmlFor = "timeInput";
         form.appendChild(timeLabel);
         const timeInput = document.createElement("input");
         timeInput.type = "text";

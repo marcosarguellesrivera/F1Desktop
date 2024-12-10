@@ -19,7 +19,7 @@ header {
 /*Especificidad: (0, 1, 2) */
 header a:hover {
     background-color: #B30033;
-    color: #000000;
+    color: #fff700;
 }
 
 /*Especificidad: (0, 0, 1) */

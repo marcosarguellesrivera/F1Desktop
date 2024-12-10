@@ -127,6 +127,11 @@ footer {
     text-align: right;
 }
 
+form {
+    align-items: center;
+    margin: 2em 10em;
+}
+
 /*Especificidad: (0, 0, 2) */
 h1 a {
     background-color: #B30033;
@@ -158,6 +163,21 @@ h4 {
 /*Especificidad: (0, 0, 1) */
 input {
     margin: 1em;
+    display:block;
+}
+
+input + input, form input:nth-last-child(1) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-top: 2em;
+    align-self: center;
+    background-color: #B30033;
+    padding: 0.5em 1em;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
 }
 
 /*Especificidad: (0, 0, 1) */
@@ -244,6 +264,7 @@ section label, main label {
     font-weight: bold;
     font-size: 1em;
     width: 100%;
+    display: block;
 }
 
 /*Especificidad: (0, 0, 1) */

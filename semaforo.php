@@ -57,10 +57,6 @@
         public function createConection() {
             $this->db = new mysqli($this->server, $this->user, $this->pass);
         }
-
-        public function closeConection() {
-            $this->db->close();
-        }
     }
     $db = new Record();
     $topRecords = "";
@@ -101,7 +97,7 @@
             <a href='meteorologia.html'>Meteorología</a>
             <a href='noticias.html'>Noticias</a>
             <a href='piloto.html'>Piloto</a>
-            <a href='viajes.html'>Viajes</a>
+            <a href='viajes.php'>Viajes</a>
             </nav>
         </header>
         <p><a href='index.html'>F1 Desktop</a> >> <a href='juegos.html'>Juegos</a> >> Semáforo</p>
@@ -109,6 +105,7 @@
             <nav>
                 <a href='memoria.html'>Memoria</a>
                 <a href='semaforo.php'>Semáforo</a>
+                <a href='liga.php'>Liga</a>
             </nav>
             <script>
                 semaforo = new Semaforo();
