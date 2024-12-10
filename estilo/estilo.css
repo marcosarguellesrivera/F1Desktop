@@ -47,7 +47,7 @@ main > aside > article > button:nth-of-type(1) {
 
 /*Especificidad: (0, 1, 0) */
 .active {
-    color: #000000;
+    color: #fff700;
     background-color: #B30033;
     font-weight: bold;
 }
@@ -157,9 +157,7 @@ h4 {
 
 /*Especificidad: (0, 0, 1) */
 input {
-    display: block;
-    text-align: center;
-    align-self: center;
+    margin: 1em;
 }
 
 /*Especificidad: (0, 0, 1) */
@@ -239,6 +237,13 @@ section, aside {
     box-shadow: 0 0 2em #0000001a;
     margin: 2em auto;
     padding: 3em;
+}
+
+/*Especificidad: (0, 0, 2) */
+section label, main label {
+    font-weight: bold;
+    font-size: 1em;
+    width: 100%;
 }
 
 /*Especificidad: (0, 0, 1) */

@@ -56,13 +56,6 @@ section h3 {
 }
 
 /*Especificidad: (0, 0, 2) */
-section label {
-    font-weight: bold;
-    font-size: 1em;
-    width: 100%;
-}
-
-/*Especificidad: (0, 0, 2) */
 section p {
     white-space: normal;
     overflow-wrap: break-word;
