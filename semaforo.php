@@ -51,7 +51,7 @@
                 $list .= "</ol>";
             }
             $ps->close();
-            return '<h3>Mejores tiempos - Nivel ' . $level . '</h3>' . $list;
+            return '<h4>Nivel ' . $level . '</h4>' . $list;
         }
 
         public function createConection() {
@@ -114,7 +114,7 @@
                 semaforo = new Semaforo();
             </script>
         </main>
-        <aside>" . $topRecords . "</aside>
+        <aside><h3>Mejores 10 tiempos</h3>" . $topRecords . "</aside>
     </body>
     </html>";
 ?>

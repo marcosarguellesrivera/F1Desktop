@@ -1,6 +1,6 @@
 /*Marcos Argüelles Rivera UO295029*/
 
-main > section > article {
+main > aside > article {
     width: 100%;
     height: 70vh;
     position: relative;
@@ -8,7 +8,7 @@ main > section > article {
     border-radius: 1em;
 }
 
-main > section > article > img {
+main > aside > article > img {
     width: 100%;
     height: 60vh;
     position: absolute;
@@ -17,7 +17,7 @@ main > section > article > img {
     border-radius: 0.5em;
 }
 
-main > section > article > button {
+main > aside > article > button {
     position: absolute;
     width: 2em;
     height: 2em;
@@ -35,12 +35,12 @@ main > section > article > button {
     font-weight: bold;
 }
 
-main > section > article > button:nth-of-type(2) {
+main > aside > article > button:nth-of-type(2) {
     top: 50%;
     left: 2%;
 }
   
-main > section > article > button:nth-of-type(1) {
+main > aside > article > button:nth-of-type(1) {
     top: 50%;
     right: 2%;
 }

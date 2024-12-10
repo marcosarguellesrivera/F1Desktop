@@ -30,6 +30,57 @@ class Carrusel {
         }
     }
 }
+
+class Moneda {
+    private $monedaCambio;
+    private $monedaLocal;
+
+    public function __construct($monedaCambio, $monedaLocal) {
+        $this->monedaCambio = $monedaCambio;
+        $this->monedaLocal = $monedaLocal;
+    }
+
+    public function mostrarCambio()
+    {
+        $api = "https://open.er-api.com/v6/latest/{$this->monedaCambio}";
+
+        $result = file_get_contents($api);
+
+        if ($result === false) {
+            return null;
+        }
+
+        $decodedResult = json_decode($result, true);
+
+        if (!$decodedResult || !isset($decodedResult['rates'][$this->monedaLocal])) {
+            echo "<p>No se pudo obtener el cambio de moneda</p>";
+        }
+        $cambio = $decodedResult['rates'][$this->monedaLocal];
+        echo "<h4>Cambio de Euros({$this->monedaCambio}) a Dólares estadounidenses({$this->monedaLocal})</h4>";
+        echo "<p>1 {$this->monedaCambio} equivale a {$cambio} {$this->monedaLocal}</p>";
+    }
+
+    public function mostrarCambioInverso()
+    {
+        $api = "https://open.er-api.com/v6/latest/{$this->monedaLocal}";
+
+        $result = file_get_contents($api);
+
+        if ($result === false) {
+            return null;
+        }
+
+        $decodedResult = json_decode($result, true);
+
+        if (!$decodedResult || !isset($decodedResult['rates'][$this->monedaCambio])) {
+            echo "<p>No se pudo obtener el cambio de moneda</p>";
+        }
+        $cambio = $decodedResult['rates'][$this->monedaCambio];
+        echo "<h4>Cambio de Dólares estadounidenses({$this->monedaLocal}) a Euros({$this->monedaCambio})</h4>";
+        echo "<p>1 {$this->monedaLocal} equivale a {$cambio} {$this->monedaCambio}</p>";
+    }
+}
+
 echo '<html lang="es">
 <head>
     <!-- Datos que describen el documento -->
@@ -66,7 +117,7 @@ echo '<html lang="es">
     <p><a href="index.html">F1 Desktop</a> >> Viajes</p>
     <main lang="en">
         <h2>Viajes</h2>
-        <section>
+        <aside>
             <article>
                 <h3>Carrusel de imágenes</h3>';
 $carrusel = new Carrusel("Vegas", "USA");
@@ -74,7 +125,13 @@ $carrusel->carrusel();
 echo '          <button> > </button>
                 <button> < </button>
             </article>
-        </section>
+        </aside>
+        <aside>
+            <h3>Cambio de moneda</h3>';
+$moneda = new Moneda("EUR", "USD");
+$moneda->mostrarCambio();
+$moneda->mostrarCambioInverso();
+echo '  </aside>
     </main>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
