@@ -19,7 +19,6 @@ section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 3em;
   }
 
 /*Especificidad: (0, 0, 2) */

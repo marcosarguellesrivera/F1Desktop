@@ -104,8 +104,8 @@
         <main>
             <nav>
                 <a href='memoria.html'>Memoria</a>
-                <a href='semaforo.php'>Semáforo</a>
                 <a href='liga.php'>Liga</a>
+                <a href='semaforo.php'>Semáforo</a>
             </nav>
             <script>
                 semaforo = new Semaforo();

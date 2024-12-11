@@ -30,6 +30,7 @@ nav {
     align-items: center; /* Centra verticalmente los enlaces */
     width: 100%; /* Ocupa todo el ancho disponible */
     padding: 1em;
+    margin-bottom: 1em;
 }
 
 /*Especificidad: (0, 0, 3) */
@@ -48,5 +49,14 @@ header nav a {
         width: auto;
         justify-content: space-around;
         gap: 1rem;
+        margin-bottom: 0;
+    }
+
+    h1 a {
+        font-size: 3em;
+    }
+
+    header > nav > a, nav > a {
+        font-size: 1.25em;
     }
 }

@@ -67,8 +67,8 @@ echo "<html lang='es'>
         <main>
             <nav>
                 <a href='memoria.html'>Memoria</a>
-                <a href='semaforo.php'>Semáforo</a>
                 <a href='liga.php'>Liga</a>
+                <a href='semaforo.php'>Semáforo</a>
             </nav>
             <h2>Liga de carreras</h2>
             <section>

@@ -1,50 +1,5 @@
 /*Marcos Argüelles Rivera UO295029*/
 
-main > aside > article {
-    width: 100%;
-    height: 70vh;
-    position: relative;
-    overflow: hidden; 
-    border-radius: 1em;
-}
-
-main > aside > article > img {
-    width: 100%;
-    height: 60vh;
-    position: absolute;
-    transition: all 0.5s;
-    object-fit: cover;
-    border-radius: 0.5em;
-}
-
-main > aside > article > button {
-    position: absolute;
-    width: 2em;
-    height: 2em;
-    padding: 0.5em;
-    border: none;
-    border-radius: 50%;
-    z-index: 10;
-    cursor: pointer;
-    background-color: #B30033;
-    font-size: 1em;
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content: center;
-    font-weight: bold;
-}
-
-main > aside > article > button:nth-of-type(2) {
-    top: 50%;
-    left: 2%;
-}
-  
-main > aside > article > button:nth-of-type(1) {
-    top: 50%;
-    right: 2%;
-}
-
 /*Especificidad: (0, 1, 0) */
 .active {
     color: #fff700;
@@ -147,6 +102,8 @@ h2 {
     border-bottom: 0.2em solid #000000;
     padding-bottom: 1em;
     margin-bottom: 2em;;
+    display: block;
+    width: 100%;
 }
 
 /*Especificidad: (0, 0, 1) */
@@ -201,6 +158,56 @@ main > article {
     text-align: center;
 }
 
+/*Especificidad: (0, 0, 3)*/
+main > aside > article {
+    width: 100%;
+    height: 70vh;
+    position: relative;
+    overflow: hidden; 
+    border-radius: 1em;
+}
+
+/*Especificidad: (0, 0, 4)*/
+main > aside > article > img {
+    width: 100%;
+    height: 60vh;
+    position: absolute;
+    transition: all 0.5s;
+    object-fit: cover;
+    border-radius: 0.5em;
+}
+
+/*Especificidad: (0, 0, 4)*/
+main > aside > article > button {
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    padding: 0.5em;
+    border: none;
+    border-radius: 50%;
+    z-index: 10;
+    cursor: pointer;
+    background-color: #B30033;
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/*Especificidad: (0, 1, 4)*/
+main > aside > article > button:nth-of-type(2) {
+    top: 50%;
+    left: 2%;
+}
+  
+/*Especificidad: (0, 1, 4)*/
+main > aside > article > button:nth-of-type(1) {
+    top: 50%;
+    right: 2%;
+}
+
 /*Especificidad: (0, 0, 2) */
 main > button, label + button { 
     align-self: center;
@@ -222,12 +229,13 @@ main > div {
     margin: 2em 0;
 }
 
-/*Especificidad: (0, 0, 1) */
-nav {
-    width:100%;
-    margin-bottom: 1em;
-    justify-content: center;
-    display: flex;
+main > nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+main > nav > a {
+    text-align: center;
 }
 
 /*Especificidad: (0, 0, 1) */
@@ -310,11 +318,7 @@ video {
 }
 
 @media (max-width: 800px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
-    /*Especificidad: (0, 0, 0) */
-    * {
-        font-size: 90%;
-    }
-    
+   
     /*Especificidad: (0, 0, 1) */
     header {
         padding: 75%;
@@ -328,7 +332,14 @@ video {
     }
 
     /*Especificidad: (0, 0, 0) */
-    *{
-        font-size: 70%;
+    * {
+        font-size: 90%;
     }
+    
+    /*Especificidad: (0, 0, 3) */
+    h3 + article > img {
+        width: 100%;
+        height: 40em;
+    }
+    
 }
