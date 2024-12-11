@@ -231,11 +231,23 @@ main > div {
 
 main > nav {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 main > nav > a {
     text-align: center;
+}
+
+main section:nth-last-of-type(1) > h3 + button {
+    align-self: center;
+    margin-top: 0.5em;
+    background-color: #B30033;
+    padding: 0.5em 1em;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
 }
 
 /*Especificidad: (0, 0, 1) */
@@ -265,6 +277,7 @@ section, aside {
     box-shadow: 0 0 2em #0000001a;
     margin: 2em auto;
     padding: 3em;
+    background-color: #ffffff;
 }
 
 /*Especificidad: (0, 0, 2) */

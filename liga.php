@@ -40,10 +40,10 @@ echo "<html lang='es'>
         <!-- Datos que describen el documento -->
         <meta charset='UTF-8' />
         <meta name='author' content='Marcos Argüelles Rivera'/>
-        <meta name='description' content=''/>
-        <meta name='keywords' content=','/>
+        <meta name='description' content='Liga de carreras de F1Desktop'/>
+        <meta name='keywords' content='Liga, carrera, F1'/>
         <meta name='viewport' content='width=device-width,initial-scale=1.0'/>
-        <title>F1 Desktop: Semáforo</title>
+        <title>F1 Desktop: Liga de Carreras</title>
         <link rel='icon' type='image/icon' href='multimedia/imagenes/f1.png'>
         <link rel='stylesheet' type='text/css' href='estilo/estilo.css' />
         <link rel='stylesheet' type='text/css' href='estilo/layout.css'/>
@@ -68,6 +68,7 @@ echo "<html lang='es'>
             <nav>
                 <a href='memoria.html'>Memoria</a>
                 <a href='liga.php'>Liga</a>
+                <a href='api.html'>API</a>
                 <a href='semaforo.php'>Semáforo</a>
             </nav>
             <h2>Liga de carreras</h2>

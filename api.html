@@ -5,15 +5,15 @@
     <!-- Datos que describen el documento -->
     <meta charset="UTF-8" />
     <meta name="author" content="Marcos Argüelles Rivera"/>
-    <meta name="description" content="Juego de memoria de F1Desktop"/>
-    <meta name="keywords" content="memoria,tarjeta"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=","/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <title>F1 Desktop: Memoria</title>
     <link rel="icon" type="image/icon" href="multimedia/imagenes/f1.png">
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css"/>
     <link rel="stylesheet" type="text/css" href="estilo/memoria.css"/>
-    <script src="js/memoria.js"></script>
+    <script src="js/api.js"></script>
 </head>
 <body>
     <!-- Datos con el contenidos que aparece en el navegador -->
@@ -37,12 +37,10 @@
             <a href="api.html">API</a>
             <a href="semaforo.php">Semáforo</a>
         </nav>
-        <h2>Juego de Memoria</h2>
+        <h2>Juego de API</h2>
+        <script>
+            var juego = new Juego();
+        </script>
     </main>
-    <script>
-        memoria = new Memoria();
-        memoria.createElements();
-        memoria.addEventListeners();
-    </script>
 </body>
 </html>
