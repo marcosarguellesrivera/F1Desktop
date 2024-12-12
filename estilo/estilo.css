@@ -194,6 +194,7 @@ main > aside > article > button {
     align-items:center;
     justify-content: center;
     font-weight: bold;
+    color: #ffffff;
 }
 
 /*Especificidad: (0, 1, 4)*/
