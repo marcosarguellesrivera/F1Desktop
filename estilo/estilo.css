@@ -82,6 +82,7 @@ footer {
     text-align: right;
 }
 
+/*Especificidad: (0, 0, 1) */
 form {
     align-items: center;
     margin: 2em 10em;
@@ -332,11 +333,7 @@ video {
 }
 
 @media (max-width: 800px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
-   
-    /*Especificidad: (0, 0, 1) */
-    header {
-        padding: 75%;
-    }
+
 } 
 
 @media (max-width: 465px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
@@ -363,7 +360,12 @@ video {
     h3 {
         font-size: 1.5em;
     }
+
     h4 {
         font-size: 1.2em;
+    }
+
+    main {
+        box-shadow: none;
     }
 }

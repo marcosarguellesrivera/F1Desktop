@@ -33,18 +33,24 @@
     <p><a href="index.html">F1 Desktop</a> >> Circuito</p>
     <main lang="en">
         <h2>Circuito</h2>
-        <h3>Archivo a leer</h3>
-        <label>Selecciona un archivo xml
-            <input type="file" onchange="circuito.leerArchivoTexto(this.files)"/>
-        </label>
-        <h3>Mapa dinámico del circuito</h3>
-        <label>Selecciona un archivo kml
-            <input type="file" onchange="circuito.crearMapaDinamico(this.files)"/>
-        </label>
-        <h3>Archivo svg a mostrar</h3>
-        <label>Selecciona un archivo svg
-            <input type="file" onchange="circuito.mostrarSvg(this.files)"/>
-        </label>
+        <section>
+            <h3>Archivo a leer</h3>
+            <label>Selecciona un archivo xml
+                <input type="file" onchange="circuito.leerArchivoTexto(this.files)"/>
+            </label>
+        </section>
+        <section>
+            <h3>Mapa dinámico del circuito</h3>
+            <label>Selecciona un archivo kml
+                <input type="file" onchange="circuito.crearMapaDinamico(this.files)"/>
+            </label>
+        </section>
+        <section>
+            <h3>Archivo svg a mostrar</h3>
+            <label>Selecciona un archivo svg
+                <input type="file" onchange="circuito.mostrarSvg(this.files)"/>
+            </label>
+        </section>
     </main>
     <script>
         const circuito = new Circuito();

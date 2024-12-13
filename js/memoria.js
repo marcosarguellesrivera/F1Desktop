@@ -82,7 +82,7 @@ class Memoria {
 
         this.elements.forEach(e => {
             const card = document.createElement("article");
-            const header = document.createElement("h3");
+            const header = document.createElement("h4");
             const img = document.createElement("img");
             card.setAttribute("data-element", e.element);
             header.textContent = "Tarjeta de memoria";

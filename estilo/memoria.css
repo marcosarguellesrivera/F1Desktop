@@ -8,6 +8,13 @@ h3 {
 }
 
 /*Especificidad: (0, 0, 1) */
+h4 {
+    font-size: 1em;
+    width: 100%;
+    text-align: center;
+}
+
+/*Especificidad: (0, 0, 1) */
 img {
     width: 200px;
     height: 150px;
@@ -43,7 +50,7 @@ section article[data-state="revealed"] {
 }
 
 /*Especificidad: (0, 0, 3) */
-section article h3,
+section article h4,
 section article img {
     margin: 0;
     width: 100%;
@@ -56,8 +63,7 @@ section article img {
 }
 
 /*Especificidad: (0, 0, 3) */
-section article h3 {
+section article h4 {
     display: flex;
-    text-align: center;
     align-items: center;
 }

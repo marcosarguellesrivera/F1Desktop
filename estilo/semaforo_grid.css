@@ -24,7 +24,7 @@ form {
     grid-template-columns: max-content 1fr; /* Columna 1 para label, Columna 2 para input */
     column-gap: 1em; /* Espaciado entre label e input */
     align-items: center; /* Alinea verticalmente */
-    margin: 1em 15em;
+    margin: 0 3em;
 }
 
 input + input {
@@ -39,6 +39,7 @@ input + input {
     cursor: pointer;
     font-weight: bold;
     color: #ffffff;
+    width: 10em;
 }
 
 section > h3 {
@@ -49,14 +50,8 @@ section > h3 {
 /*Especificidad: (0, 0, 1)*/
 input {
     justify-self: right; /* Alinea los inputs a la derecha */
-    width: 10em; /* Opcional: asegura un ancho consistente para los inputs */
+    width: 15em; /* Opcional: asegura un ancho consistente para los inputs */
     margin-top: 1em;
-}
-
-/*Especificidad: (0, 0, 1)*/
-label {
-    text-align: left; /* Alinea texto de los labels */
-    margin: 1em 0;
 }
 
 /*Especificidad: (0, 0, 1) */
@@ -75,7 +70,7 @@ h2 + section {
     row-gap: 5em;
 }
 
-/*Especificidad: (0, 2, 1) */
+/*Especificidad: (0, 1, 3) */
 .load h2 + section div {
     animation: changeBackground 1s forwards;
 }
@@ -124,5 +119,15 @@ button + button {
 @keyframes out { /*Las advertencias de redefinición en esta norma no afectan al código*/
     100% {
         background-color: #000;
+    }
+}
+
+@media (max-width: 465px) {
+    form {
+        margin: 0;
+    }
+
+    input {
+        width: 8em;
     }
 }
