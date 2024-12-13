@@ -60,7 +60,7 @@ class Circuito {
                 lector.onload = (e) => {
                     const div = document.createElement("div");
                     const kml = new DOMParser().parseFromString(e.target.result, "application/xml");
-                    console.log(new XMLSerializer().serializeToString(kml));
+                    new XMLSerializer().serializeToString(kml)
                     const namespace = "http://www.opengis.net/kml/2.2";
                     const coordenadas = kml.getElementsByTagNameNS(namespace, "coordinates")[0].textContent.trim().split("\n").map(c => {
                         var [longitud, latitud] = c.split(",").map(Number);

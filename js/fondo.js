@@ -6,7 +6,7 @@ class Fondo {
     }
 
     consultaFlickr() {
-        var flickrAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+        var flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
         var photo = 1;
         $.getJSON(flickrAPI, {
             tags: this.circuito + ", F1",
