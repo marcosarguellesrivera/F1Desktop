@@ -42,7 +42,7 @@ header nav a {
     font-size: 1.25em;
 }
 
-@media (max-width: 799px) {
+@media (max-width: 899px) {
     header nav a {
         padding: 0;
     }
