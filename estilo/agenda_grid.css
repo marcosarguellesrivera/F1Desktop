@@ -33,3 +33,9 @@ h4 {
     padding-bottom: 0.5em;
     margin: 1em 0; 
 }
+
+@media (max-width: 599px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
+    section {
+        padding: 0;
+    }
+}

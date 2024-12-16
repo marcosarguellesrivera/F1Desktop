@@ -373,4 +373,7 @@ video {
         box-shadow: none;
         padding-top: 0;
     }
+    main nav {
+        padding: 0;
+    }
 }
