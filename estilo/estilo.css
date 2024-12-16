@@ -351,15 +351,15 @@ video {
     }
     
     li, th, td, p, dt, dd {
-        font-size: 1.1em;
+        font-size: 1.3em;
     }
 
     h3 {
-        font-size: 1.5em;
+        font-size: 1.6em;
     }
 
     h4 {
-        font-size: 1.2em;
+        font-size: 1.4em;
     }
 
     main {
@@ -368,8 +368,9 @@ video {
         padding: 0;
     }
     
-    section {
+    section, aside {
         margin: auto 0;
         box-shadow: none;
+        padding-top: 0;
     }
 }

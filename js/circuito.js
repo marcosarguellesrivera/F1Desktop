@@ -11,9 +11,9 @@ class Circuito {
     leerArchivoTexto(archivos) { 
         if(this.supports) {
             var archivo = archivos[0];
-            var main = document.querySelector("main");
-            var section = document.querySelector("section");
-            if(section) main.removeChild(section);
+            const mainSection = document.querySelectorAll("section")[2];
+            var section = document.querySelector("section > section");
+            if(section) mainSection.removeChild(section);
             section = document.createElement("section");
             var nombre = document.createElement("h3");
             var tamano = document.createElement("p");
@@ -48,7 +48,7 @@ class Circuito {
                 errorArchivo.innerText = "Error : ¡¡¡ Archivo no válido !!!";
                 section.appendChild(errorArchivo);
             }       
-            main.appendChild(section);
+            mainSection.appendChild(section);
         }
     }
 
@@ -58,7 +58,10 @@ class Circuito {
             if (archivo && archivo.name.endsWith(".kml")) {
                 const lector = new FileReader();
                 lector.onload = (e) => {
-                    const div = document.createElement("div");
+                    const main = document.querySelector("main");
+                    var div = document.querySelector("div");
+                    if(div) main.removeChild(div);
+                    div = document.createElement("div");
                     const kml = new DOMParser().parseFromString(e.target.result, "application/xml");
                     new XMLSerializer().serializeToString(kml)
                     const namespace = "http://www.opengis.net/kml/2.2";
@@ -78,7 +81,6 @@ class Circuito {
                         path: coordenadas,
                     });
                     linea.setMap(mapa);
-                    const main = document.querySelector("main");
                     main.appendChild(div);
                 };
                 lector.readAsText(archivo);
@@ -93,14 +95,15 @@ class Circuito {
                 const lector = new FileReader();
                 lector.onload = (e) => {
                     const main = document.querySelector("main"); 
-                    const section = document.createElement("section");
-                    const img = document.createElement("img");
+                    const section = document.querySelectorAll("section")[1];
+                    var img = document.querySelector("img");
+                    if(img) section.removeChild(img);
+                    img = document.createElement("img");
                     img.src = e.target.result; 
                     img.alt = "Vista previa del archivo SVG";
                     img.style.maxWidth = "100%";
                     img.style.height = "auto";
                     section.appendChild(img);
-                    main.appendChild(section);
                 };
                 lector.readAsDataURL(archivo);
             }
