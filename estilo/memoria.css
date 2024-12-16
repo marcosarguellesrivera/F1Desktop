@@ -26,13 +26,14 @@ section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 3em 5em;
   }
 
 /*Especificidad: (0, 0, 2) */
 section article {
-    width: 11em;
+    width: 23%;
     height: 15em;
-    margin: 0.3em;
+    margin: 0.4em;
     transform: scale(1);
     cursor: pointer;
     transform-style: preserve-3d;
@@ -66,4 +67,24 @@ section article img {
 section article h4 {
     display: flex;
     align-items: center;
+}
+
+@media (max-width: 899px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
+    section {
+        padding: 3em;
+    }
+    section article {
+        height: 12em;
+        margin: 0.25em;
+    }
+}
+
+@media (max-width: 599px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
+    section {
+        padding: 2em;
+    }
+    section article {
+        height: 9em;
+        margin: 0.15em;
+    }
 }

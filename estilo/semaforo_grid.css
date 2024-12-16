@@ -122,12 +122,16 @@ button + button {
     }
 }
 
-@media (max-width: 465px) {
+@media (max-width: 599px) {
     form {
         margin: 0;
     }
 
     input {
         width: 8em;
+    }
+
+    h2 + section {
+        margin: auto 0;
     }
 }

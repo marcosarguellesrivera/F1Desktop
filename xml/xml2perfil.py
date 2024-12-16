@@ -26,8 +26,8 @@ def main():
 def prologo(archivo):
     archivo.write('<?xml version="1.0" encoding="UTF-8"?>\n')
     archivo.write(f'<svg xmlns="http://www.w3.org/2000/svg" '
-                          f'width="{500}" height="{700}" '
-                          f'viewBox="0 0 {500} {700}" version="2.0">\n')
+                          f'width="300" height="300" '
+                          f'viewBox="0 300 250 500" version="2.0">\n')
     archivo.write('<polyline points=\n"')
 
 def epilogo(archivo):

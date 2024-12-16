@@ -20,7 +20,8 @@ class Carrusel {
         }
         $photos = [];
         foreach($decodedResult["items"] as $photo) {
-            $photos[] = str_replace("_m", "_b", $photo["media"]["m"]);
+            //$photos[] = str_replace("_m", "_b", $photo["media"]["m"]); //Calidad alta
+            $photos[] = $photo["media"]["m"]; //Calidad baja
         }
         $photos10 = array_slice($photos, 0, 10);
         $counter = 1;

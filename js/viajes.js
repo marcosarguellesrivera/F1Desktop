@@ -9,7 +9,7 @@ class Viajes {
         this.longitud         = posicion.coords.longitude; 
         this.latitud          = posicion.coords.latitude;  
         this.getMapaEstatico();
-        this.getMapaDinamico();
+        this.crearBotonDinamico();
     }
 
     verErrores(error) {
@@ -52,6 +52,17 @@ class Viajes {
         main.appendChild(article);
     }
 
+    crearBotonDinamico() {
+        const main = document.querySelector("main");
+        var h3 = document.createElement("h3");
+        h3.textContent = "Mapa dinámico - Posición actual";
+        main.appendChild(h3);
+        var button = document.createElement("button");
+        button.textContent = "Cargar mapa";
+        button.addEventListener("click", this.getMapaDinamico.bind(this));
+        main.appendChild(button);
+    }
+    
     getMapaDinamico() {
         if (typeof this.latitud === "undefined" || typeof this.longitud === "undefined") {
             console.error("Las coordenadas no están definidas");
@@ -62,9 +73,6 @@ class Viajes {
             zoom: 15,
         };
         const main = document.querySelector("main");
-        var h3 = document.createElement("h3");
-        h3.textContent = "Mapa dinámico - Posición actual";
-        main.appendChild(h3);
         const div = document.createElement("div");
         const mapa = new google.maps.Map(div, opcionesMapa);
         new google.maps.Marker({
@@ -73,6 +81,8 @@ class Viajes {
             title: "Tu ubicación",
         });
         main.appendChild(div);
+        var button = document.querySelector("main > button");
+        main.removeChild(button);
     }
 
     setCarruselButtons() {

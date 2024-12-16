@@ -48,7 +48,7 @@ header nav a {
     }
 }
 
-@media (max-width: 465px) {
+@media (max-width: 599px) {
 
     header nav {
         flex-direction: column;
