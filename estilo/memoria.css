@@ -32,12 +32,13 @@ section {
 /*Especificidad: (0, 0, 2) */
 section article {
     width: 23%;
-    height: 15em;
+    height: 14em;
     margin: 0.4em;
     transform: scale(1);
     cursor: pointer;
     transform-style: preserve-3d;
     transition: transform .5s;
+    box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, .3);
 }
 
 /*Especificidad: (0, 1, 2) */

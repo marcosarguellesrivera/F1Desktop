@@ -115,7 +115,9 @@ class Memoria {
         const main = document.querySelector("main");
         const section = document.createElement("section");
         const p = document.createElement("p");
-        p.textContent = "Encuentra y empareja las cartas con elementos iguales para completar el juego. ¡Memoriza sus posiciones y gana!";
+        p.textContent = "El objetivo es encontrar y emparejar las cartas que muestran elementos iguales. " +
+        "Cada carta oculta una imagen, que podrás ver haciendo click sobre la carta. Memoriza las posiciones de las cartas y descubre " +
+        "las coincidencias para completar todos los pares. ¡Pon a prueba tu concentración y diviértete!";
         section.appendChild(p);
         main.appendChild(section);
     }
