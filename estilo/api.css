@@ -1,0 +1,115 @@
+/*Marcos Argüelles Rivera UO295029*/
+
+/*Especificidad: (0, 0, 1) */
+h3 {
+    grid-column: 1 / -1;
+    font-size: 1.2em;
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    align-self: center;
+    margin-top: 0.5em;
+    background-color: #000000;
+    padding: 0.25em;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    color: #ffffff;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+
+/*Especificidad: (0, 0, 1) */
+h4 {
+    font-size: 1em;
+    width: 100%;
+    text-align: center;
+}
+
+/*Especificidad: (0, 0, 1) */
+img {
+    width: 200px;
+    height: 150px;
+    transform: rotateY(180deg);
+}
+
+/*Especificidad: (0, 0, 1) */
+section {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    position: relative;
+    row-gap: 2em;
+}
+
+/*Especificidad: (0, 0, 2) */
+section article {
+    height: 11em;
+    margin: 0.4em;
+    transform: scale(1);
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
+
+/*Especificidad: (0, 1, 2) */
+section article[data-state="flipped"],
+section article[data-state="confirmed"] {
+    transform: rotateY(180deg);
+}
+
+section article:nth-of-type(n+7):nth-of-type(-n+12) {
+    height: 5em;
+}
+
+/*Especificidad: (0, 0, 3) */
+section article h3,
+section article h4,
+section article img {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 0.2em;
+    background: #B30033;
+    color: #ffffff;
+    backface-visibility: hidden;
+}
+
+/*Especificidad: (0, 0, 3) */
+section article h4, section article h3 {
+    display: flex;
+    align-items: center;
+}
+
+section > article > img + img {
+    transform: rotateY(0deg);
+}
+
+section p {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 2em;
+}
+
+@media (max-width: 899px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
+    section {
+        padding: 3em;
+    }
+    section article {
+        height: 12em;
+        margin: 0.25em;
+    }
+}
+
+@media (max-width: 599px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
+    section {
+        padding: 2em;
+    }
+    section article {
+        height: 9em;
+        margin: 0.15em;
+    }
+}

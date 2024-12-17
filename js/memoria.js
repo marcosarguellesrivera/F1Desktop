@@ -88,7 +88,6 @@ class Memoria {
             header.textContent = "Tarjeta de memoria";
             img.src = e.source;
             img.alt = e.element;
-            img.classList.add("card-image");
             card.appendChild(header);
             card.appendChild(img);
             section.appendChild(card);
