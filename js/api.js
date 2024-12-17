@@ -167,30 +167,35 @@ class Juego {
     handleDragEvents() {
         let touchStartX = 0;
         let touchStartY = 0;
+        let currentTranslateX = 0;
+        let currentTranslateY = 0;
         let drag = null;
 
         function handleTouchStart(e) {
             touchStartX = e.touches[0].clientX;
             touchStartY = e.touches[0].clientY;
-            drag = e.currentTarget;
+            drag = e.target?.closest('article');
+            if(drag.textContent === "Piloto") {
+                drag = null;
+            }
+        }
+
+        function handleTouchMove(e) {
+            e.preventDefault();
         }
 
         function handleTouchEnd(e) {
             const touchEndX = e.changedTouches[0].clientX;
             const touchEndY = e.changedTouches[0].clientY;
-
-            const target = document.elementFromPoint(touchEndX, touchEndY);
-
-            if (!target || !drag) return;
-
-            const targetElement = target.dataset.element;
-
-            if (drag.dataset.element === targetElement && target.dataset.state !== 'confirmed') {
+            const target = document.elementFromPoint(touchEndX, touchEndY)?.closest('article');
+            if (target && drag.textContent === target.dataset.element && target.dataset.state !== 'confirmed') {
                 target.dataset.state = 'confirmed';
+                drag.dataset.state = 'confirmed';
+
                 const articles = document.querySelectorAll("article[data-element]");
                 const confirmedElements = Array.from(articles).filter(article => article.dataset.state === 'confirmed');
 
-                if (confirmedElements.length === 6) {
+                if (confirmedElements.length === 12) {
                     setTimeout(() => {
                         const section = document.querySelector("section");
                         const p = document.createElement("p");
@@ -199,34 +204,28 @@ class Juego {
                     }, 500);
                 }
             }
-            drag.dataset.state = ''; // Restablecer el estado
             drag = null;
         }
+        
         function handleDragStart(e) {
             drag = this;
-        }
-        
-        function handleDragEnd(e) {
-            this.dataset.state = '';
         }
         
         function handleDragOver(e) {
             if (e.preventDefault) {
                 e.preventDefault();
             }
-        
-            return false;
         }
         
         function handleDrop(e) {
             e.stopPropagation();
             const targetElement = this.dataset.element;
-            if (drag.dataset.element === targetElement && this.dataset.state !== 'confirmed') {
+            if (drag.dataset.element === targetElement && this.dataset.state !== 'confirmed' && drag.dataset.state !== "confirmed") {
                 this.dataset.state = 'confirmed';
-                const articles = document.querySelectorAll("article[data-element]");
+                drag.setAttribute("data-state", "confirmed");
+                const articles = document.querySelectorAll("article");
                 const confirmedElements = Array.from(articles).filter(article => article.dataset.state === 'confirmed');
-
-                if (confirmedElements.length === 6) {
+                if (confirmedElements.length === 12) {
                     setTimeout(function() {
                         const section = document.querySelector("section");
                         const p = document.createElement("p");
@@ -235,20 +234,16 @@ class Juego {
                     }, 500);
                 }
             }
-          
-            this.classList.remove('over');
-            return false;
         }
 
         const articles = document.querySelectorAll("article");
         articles.forEach(function(article) {
             article.addEventListener('dragstart', handleDragStart);
-            article.addEventListener('dragend', handleDragEnd);
-
             article.addEventListener('dragover', handleDragOver);
             article.addEventListener('drop', handleDrop);
             article.addEventListener('touchstart', handleTouchStart);
             article.addEventListener('touchend', handleTouchEnd);
+            article.addEventListener('touchmove', handleTouchMove);
         });
     }
 }

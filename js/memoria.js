@@ -106,7 +106,10 @@ class Memoria {
         const revealedCards = document.querySelectorAll('article[data-state="revealed"]');
         if (revealedCards.length === this.elements.length) {
             setTimeout(() => {
-                alert('¡Enhorabuena! Has ganado el juego.');
+                const section = document.querySelector("section");
+                const p = document.createElement("p");
+                p.textContent = "¡¡¡FELICIDADES!!! Has ganado el juego";
+                section.appendChild(p);
            }, 500); 
         }
     }

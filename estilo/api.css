@@ -55,9 +55,12 @@ section article {
 }
 
 /*Especificidad: (0, 1, 2) */
-section article[data-state="flipped"],
 section article[data-state="confirmed"] {
     transform: rotateY(180deg);
+}
+
+section article:nth-of-type(n+7):nth-of-type(-n+12)[data-state="confirmed"] {
+    transform: rotateY(0deg);
 }
 
 section article:nth-of-type(n+7):nth-of-type(-n+12) {
@@ -117,6 +120,7 @@ section p {
 @media (max-width: 599px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
     section {
         padding: 2em;
+        grid-template-columns: repeat(3, 1fr);
     }
     section article {
         height: 9em;

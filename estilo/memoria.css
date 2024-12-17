@@ -27,7 +27,7 @@ section {
     flex-wrap: wrap;
     justify-content: center;
     padding: 3em 5em;
-  }
+}
 
 /*Especificidad: (0, 0, 2) */
 section article {
@@ -67,6 +67,12 @@ section article img {
 section article h4 {
     display: flex;
     align-items: center;
+}
+
+section p {
+    text-align: center;
+    font-size: 2em;
+    width: 100%;
 }
 
 @media (max-width: 899px) { /*Las advertencias de redefinición en esta norma no afectan al código*/

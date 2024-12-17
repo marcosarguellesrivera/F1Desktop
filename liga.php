@@ -54,6 +54,7 @@ echo "<html lang='es'>
     <header>
         <h1><a href='index.html'>F1 Desktop</a></h1>
         <nav>
+            <a href='index.html'>Inicio</a>
             <a href='calendario.html'>Calendario</a>
             <a href='circuito.html'>Circuito</a>
             <a class='active' href='juegos.html'>Juegos</a>
