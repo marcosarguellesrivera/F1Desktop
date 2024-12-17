@@ -65,9 +65,19 @@ section article:nth-of-type(n+7):nth-of-type(-n+12) {
 }
 
 /*Especificidad: (0, 0, 3) */
-section article h3,
 section article h4,
 section article img {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 0.2em;
+    background: #ffffff;
+    color: #000000;
+    backface-visibility: hidden;
+}
+
+section article h3 {
     margin: 0;
     width: 100%;
     height: 100%;
