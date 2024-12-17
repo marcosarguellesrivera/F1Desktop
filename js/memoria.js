@@ -106,11 +106,17 @@ class Memoria {
         const revealedCards = document.querySelectorAll('article[data-state="revealed"]');
         if (revealedCards.length === this.elements.length) {
             setTimeout(() => {
-                const section = document.querySelector("section");
-                const p = document.createElement("p");
-                p.textContent = "¡¡¡FELICIDADES!!! Has ganado el juego";
-                section.appendChild(p);
+                alert('¡Enhorabuena! Has ganado el juego.');
            }, 500); 
         }
+    }
+
+    createHelp() {
+        const main = document.querySelector("main");
+        const section = document.createElement("section");
+        const p = document.createElement("p");
+        p.textContent = "Encuentra y empareja las cartas con elementos iguales para completar el juego. ¡Memoriza sus posiciones y gana!";
+        section.appendChild(p);
+        main.appendChild(section);
     }
 }

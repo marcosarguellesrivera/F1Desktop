@@ -69,9 +69,15 @@ section article h4 {
     align-items: center;
 }
 
-section p {
+article + p {
     text-align: center;
     font-size: 2em;
+    width: 100%;
+}
+
+section p {
+    text-align: center;
+    font-size: 1.2em;
     width: 100%;
 }
 

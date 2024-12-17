@@ -73,16 +73,21 @@ class Juego {
 
     crearEstructura() {
         const main = document.querySelector("main");
+        const ayuda = document.createElement("section");
+        const p = document.createElement("p");
+        p.textContent = "Adivina los pilotos por su escudería y el himno de su país, arrastra el nombre del piloto hasta la tarjeta que creas correspondiente";
+        ayuda.appendChild(p);
+        main.appendChild(ayuda);
         const section = document.createElement("section");
         const h3 = document.createElement("h3");
-        h3.textContent = "Adivina los pilotos por su escudería y el himno de su país";
+        h3.textContent = "Realciona";
         const button = document.createElement("button");
         button.textContent = "Expandir";
         section.appendChild(h3);
         this.crearTarjetas(section);
         this.crearDraggables(section);
         button.addEventListener("click", function() {
-            var sectionToExpand = document.querySelector("section");
+            var sectionToExpand = document.querySelectorAll("section")[1];
             if(document.webkitFullscreenElement) {
                 document.webkitCancelFullScreen();
                 this.textContent = "Expandir";
@@ -165,85 +170,73 @@ class Juego {
     }
 
     handleDragEvents() {
-        let touchStartX = 0;
-        let touchStartY = 0;
-        let currentTranslateX = 0;
-        let currentTranslateY = 0;
         let drag = null;
+        let self = this;
 
-        function handleTouchStart(e) {
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
+        this.handleTouchStart = (e) => {
             drag = e.target?.closest('article');
-            if(drag.textContent === "Piloto") {
+            if (drag && drag.textContent === "Piloto") {
                 drag = null;
             }
-        }
+        };
 
-        function handleTouchMove(e) {
+        this.handleTouchMove = (e) => {
             e.preventDefault();
-        }
+        };
 
-        function handleTouchEnd(e) {
+        this.handleTouchEnd = (e) => {
             const touchEndX = e.changedTouches[0].clientX;
             const touchEndY = e.changedTouches[0].clientY;
             const target = document.elementFromPoint(touchEndX, touchEndY)?.closest('article');
-            if (target && drag.textContent === target.dataset.element && target.dataset.state !== 'confirmed') {
+    
+            if (target && drag && drag.textContent === target.dataset.element && target.dataset.state !== 'confirmed') {
                 target.dataset.state = 'confirmed';
                 drag.dataset.state = 'confirmed';
-
-                const articles = document.querySelectorAll("article[data-element]");
-                const confirmedElements = Array.from(articles).filter(article => article.dataset.state === 'confirmed');
-
-                if (confirmedElements.length === 12) {
-                    setTimeout(() => {
-                        const section = document.querySelector("section");
-                        const p = document.createElement("p");
-                        p.textContent = "¡¡¡FELICIDADES!!! Has ganado el juego";
-                        section.appendChild(p);
-                    }, 500);
-                }
+                this.checkWinCondition();
             }
             drag = null;
-        }
+        };
         
-        function handleDragStart(e) {
+        this.handleDragStart = function (e) {
             drag = this;
-        }
+        };
         
-        function handleDragOver(e) {
-            if (e.preventDefault) {
-                e.preventDefault();
-            }
-        }
+        this.handleDragOver = function (e) {
+            if (e.preventDefault) e.preventDefault();
+        };
         
-        function handleDrop(e) {
+        this.handleDrop = function (e) {
             e.stopPropagation();
             const targetElement = this.dataset.element;
             if (drag.dataset.element === targetElement && this.dataset.state !== 'confirmed' && drag.dataset.state !== "confirmed") {
                 this.dataset.state = 'confirmed';
-                drag.setAttribute("data-state", "confirmed");
-                const articles = document.querySelectorAll("article");
-                const confirmedElements = Array.from(articles).filter(article => article.dataset.state === 'confirmed');
-                if (confirmedElements.length === 12) {
-                    setTimeout(function() {
-                        const section = document.querySelector("section");
-                        const p = document.createElement("p");
-                        p.textContent = "¡¡¡FELICIDADES!!! Has ganado el juego";
-                        section.appendChild(p);
-                    }, 500);
-                }
+                drag.dataset.state = 'confirmed';
+                self.checkWinCondition();
             }
-        }
+        };
+
+        this.checkWinCondition = () => {
+            const articles = document.querySelectorAll("article");
+            const confirmedElements = Array.from(articles).filter(article => article.dataset.state === 'confirmed');
+    
+            if (confirmedElements.length === 12) {
+                setTimeout(() => {
+                    const section = document.querySelectorAll("section")[1];
+                    const p = document.createElement("p");
+                    p.textContent = "¡¡¡FELICIDADES!!! Has ganado el juego";
+                    section.appendChild(p);
+                }, 500);
+            }
+        };
 
         const articles = document.querySelectorAll("article");
-        articles.forEach(function(article) {
-            article.addEventListener('dragstart', handleDragStart);
-            article.addEventListener('dragover', handleDragOver);
-            article.addEventListener('drop', handleDrop);
-            article.addEventListener('touchstart', handleTouchStart);
-            article.addEventListener('touchend', handleTouchEnd);
-            article.addEventListener('touchmove', handleTouchMove);
+        articles.forEach((article) => {
+            article.addEventListener('dragstart', this.handleDragStart.bind(article));
+            article.addEventListener('dragover', this.handleDragOver.bind(article));
+            article.addEventListener('drop', this.handleDrop.bind(article));
+            article.addEventListener('touchstart', this.handleTouchStart);
+            article.addEventListener('touchend', this.handleTouchEnd);
+            article.addEventListener('touchmove', this.handleTouchMove);
         });
     }
 }

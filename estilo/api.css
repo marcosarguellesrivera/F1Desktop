@@ -3,7 +3,7 @@
 /*Especificidad: (0, 0, 1) */
 h3 {
     grid-column: 1 / -1;
-    font-size: 1.2em;
+    font-size: 1.5em;
     width: 100%;
     text-align: center;
 }
@@ -89,6 +89,7 @@ section article h3 {
     background: #B30033;
     color: #ffffff;
     backface-visibility: hidden;
+    font-size: 1.2em;
 }
 
 /*Especificidad: (0, 0, 3) */
@@ -101,10 +102,14 @@ section > article > img + img {
     transform: rotateY(0deg);
 }
 
+button + p {
+    font-size: 1.8em;
+}
+
 section p {
     grid-column: 1 / -1;
+    font-size: 1.2em;
     text-align: center;
-    font-size: 2em;
 }
 
 @media (max-width: 899px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
