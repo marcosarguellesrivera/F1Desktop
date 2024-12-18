@@ -78,7 +78,6 @@ class Semaforo {
         const form = document.createElement("form");
         form.action = "#";
         form.method = "post";
-        form.name = "enviar";
         const nameLabel = document.createElement("label");
         nameLabel.textContent = "Nombre: ";
         nameLabel.htmlFor = "nameInput";
