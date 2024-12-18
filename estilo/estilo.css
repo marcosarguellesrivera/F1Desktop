@@ -35,7 +35,7 @@ body {
     color: #333;
 }
 
-/*Especificidad: (0, 1, 2) */
+/*Especificidad: (0, 0, 2) */
 body > p {
     font-size: medium;
     margin-left: 0.5em;
@@ -124,10 +124,7 @@ input, select {
     display:block;
 }
 
-select {
-    height: 2em;
-}
-
+/*Especificidad: (0, 0, 2) y (0, 1, 2) */
 input + input, form input:nth-last-child(1) {
     grid-column: 1 / -1;
     justify-self: center;
@@ -207,7 +204,7 @@ main > aside > article > button:nth-of-type(2) {
     top: 50%;
     left: 2%;
 }
-  
+
 /*Especificidad: (0, 1, 4)*/
 main > aside > article > button:nth-of-type(1) {
     top: 50%;
@@ -235,15 +232,18 @@ main > div {
     margin: 2em 0;
 }
 
+/*Especificidad: (0, 0, 2) */
 main > nav {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
 
+/*Especificidad: (0, 0, 3) */
 main > nav > a {
     text-align: center;
 }
 
+/*Especificidad: (0, 1, 4) */
 main section:nth-last-of-type(1) > h3 + button {
     align-self: center;
     margin-top: 0.5em;
@@ -296,6 +296,11 @@ section label, main label {
 }
 
 /*Especificidad: (0, 0, 1) */
+select {
+    height: 2em;
+}
+
+/*Especificidad: (0, 0, 1) */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -336,7 +341,7 @@ video {
     display: block;
     border: 0.2rem #000000 solid;
 }
-@media (max-width: 599px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
+@media (max-width: 599px) { /*Las advertencias de redefinición en estas normas no afectan al código*/
     /*Especificidad: (0, 0, 2) */
     body > p {
         visibility: hidden;
@@ -354,33 +359,41 @@ video {
         height: 35em;
     }
     
+    /*Especificidad: (0, 0, 1) */
     li, th, td, p, dt, dd {
         font-size: 1.3em;
     }
 
+    /*Especificidad: (0, 0, 1) */
     th, td {
         padding: 1em 0.5em;
     }
 
+    /*Especificidad: (0, 0, 1) */
     h3 {
         font-size: 1.6em;
     }
 
+    /*Especificidad: (0, 0, 1) */
     h4 {
         font-size: 1.4em;
     }
 
+    /*Especificidad: (0, 0, 1) */
     main {
         box-shadow: none;
         margin: 0;
         padding: 0;
     }
     
+    /*Especificidad: (0, 0, 1) */
     section, aside {
         margin: auto 0;
         box-shadow: none;
         padding-top: 0;
     }
+
+    /*Especificidad: (0, 0, 2) */
     main nav {
         padding: 0;
     }

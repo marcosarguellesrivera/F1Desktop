@@ -29,7 +29,7 @@ article h3 {
     text-align: center;
 }
 
-/*Especificidad: (0, 0, 3) y (0, 0, 3) */
+/*Especificidad: (0, 0, 3) */
 section > label > input,
 section > label > textarea {
     width: 100%;

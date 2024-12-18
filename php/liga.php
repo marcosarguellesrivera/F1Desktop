@@ -79,10 +79,10 @@
             <th id='escuderiaTablaPilotos' scope='col'>Escudería</th><th id='nacionalidadTablaPilotos' scope='col'>Nacionalidad</th><th id='puntosTablaPilotos' scope='col'>Puntos</th></tr>";
             $i = 1;
             foreach($result as $pilot) {
-                $escuderia = $this->getTeamForPilot($pilot['pId']);
+                $team = $this->getTeamForPilot($pilot['pId']);
                 $line = "<tr><td headers='posicionTablaPilotos'>{$i}</td>";
                 $line = $line . "<td headers='pilotoTablaPilotos'>{$pilot['pNombre']} {$pilot['pApellido']}</td>";
-                $line = $line . "<td headers='escuderiaTablaPilotos'>{$escuderia}</td>";
+                $line = $line . "<td headers='escuderiaTablaPilotos'>{$team}</td>";
                 $line = $line . "<td headers='nacionalidadTablaPilotos'>{$pilot['pNacionalidad']}</td>";
                 $line = $line . "<td headers='puntosTablaPilotos'>{$pilot['pPuntos']}</td></tr>";
                 $classification = $classification . $line;
@@ -107,6 +107,28 @@
                 $line = $line . "<td headers='puntosTablaEscuderias'>{$team['ePuntos']}</td></tr>";
                 $classification = $classification . $line;
                 $i++;
+            }
+            $classification = $classification . "</table>";
+            return $classification;
+        }
+
+        public function getRaceResults($caId) {
+            $result = $this->db->query("SELECT * FROM ResultadosCarreras WHERE caId = {$caId} ORDER BY caPuntos DESC")->fetch_all(MYSQLI_ASSOC);
+            $name = $this->getRaceName($caId);
+            $date = $this->getRaceDate($caId);
+            $classification = "<h4>{$name}</h4><h4>{$date}</h4>";
+            $classification = $classification . "<table><tr><th id='posicionCarrera'>Posición</th><th id='pilotoCarrera' scope='col'>Piloto</th>" . "
+            <th id='escuderiaCarrera' scope='col'>Escudería</th><th id='nacionalidadCarrera' scope='col'>Nacionalidad</th><th id='puntosCarrera' scope='col'>Puntos</th></tr>";
+            foreach($result as $r) {
+                $team = $this->getTeamForPilot($r['pId']);
+                $pilot = $this->getPilotName($r["pId"]);
+                $nationality = $this->getPilotNationality($r["pId"]);
+                $line = "<tr><td headers='posicionCarrera'>{$r['caPosicion']}</td>";
+                $line = $line . "<td headers='pilotoCarrera'>{$pilot}</td>";
+                $line = $line . "<td headers='escuderiaCarrera'>{$team}</td>";
+                $line = $line . "<td headers='nacionalidadCarrera'>{$nationality}</td>";
+                $line = $line . "<td headers='puntosCarrera'>{$r['caPuntos']}</td></tr>";
+                $classification = $classification . $line;
             }
             $classification = $classification . "</table>";
             return $classification;
@@ -205,6 +227,39 @@
             return $options;
         }
 
+        public function showPastRaces() {
+            $result = $this->db->query("SELECT DISTINCT caId FROM ResultadosCarreras");
+            $options = "";
+            while($row = $result->fetch_assoc()) {
+                $caId = $row["caId"];
+                $resultRace = $this->db->query("SELECT caNombre FROM Carreras WHERE caId = {$caId}");
+                $name = "";
+                if($rowRace = $resultRace->fetch_assoc()) {
+                    $name = $rowRace["caNombre"];
+                }
+                $caId = $row["caId"];
+                $options = $options . "<option value='{$caId}'>{$name}</option>";
+            }
+            return $options;
+        }
+
+        public function showUnracedRaces() {
+            $result = $this->db->query("SELECT * FROM Carreras");
+            $result2 = $this->db->query("SELECT DISTINCT caId FROM ResultadosCarreras");
+            $raced = [];
+            while($row = $result2->fetch_assoc()) {
+                $raced[] = $row["caId"];
+            }
+            $options = "";
+            while($race = $result->fetch_assoc()) {
+                $caId = $race["caId"];
+                if(!in_array($caId, $raced)) {
+                    $options = $options . "<option value='{$caId}'>{$race['caNombre']}</option>";
+                }
+            }
+            return $options;
+        }
+
         public function getPilotName($pId) {
             $ps = $this->db->prepare("SELECT pNombre, pApellido FROM Pilotos WHERE pId = ?");
             $ps->bind_param("i", $pId);
@@ -217,6 +272,45 @@
             }
             $ps->close();
             return $name;
+        }
+
+        public function getPilotNationality($pId) {
+            $ps = $this->db->prepare("SELECT pNacionalidad FROM Pilotos WHERE pId = ?");
+            $ps->bind_param("i", $pId);
+            $ps->execute();
+            $result = $ps->get_result();
+            $nationality = "";
+            if($result->num_rows > 0 && $row = $result->fetch_assoc()) {
+                $nationality = $row['pNacionalidad'];
+            }
+            $ps->close();
+            return $nationality;
+        }
+
+        public function getRaceName($caId) {
+            $ps = $this->db->prepare("SELECT caNombre FROM Carreras WHERE caId = ?");
+            $ps->bind_param("i", $caId);
+            $ps->execute();
+            $result = $ps->get_result();
+            $name = "";
+            if($result->num_rows > 0 && $row = $result->fetch_assoc()) {
+                $name = $row['caNombre'];
+            }
+            $ps->close();
+            return $name;
+        }
+
+        public function getRaceDate($caId) {
+            $ps = $this->db->prepare("SELECT caFecha FROM ResultadosCarreras WHERE caId = ?");
+            $ps->bind_param("i", $caId);
+            $ps->execute();
+            $result = $ps->get_result();
+            $date = "";
+            if($result->num_rows > 0 && $row = $result->fetch_assoc()) {
+                $date = $row['caFecha'];
+            }
+            $ps->close();
+            return $date;
         }
 
         public function addPilot($name, $surname, $country, $car) {
@@ -247,6 +341,13 @@
             $id = $this->getLastRaceId() + 1;
             $ps = $this->db->prepare("INSERT INTO Carreras (caId, caNombre, caCircuito, caPais, caMeteorologia) VALUES (?, ?, ?, ?, ?)");
             $ps->bind_param("issss", $id, $name, $circuit, $country, $weather);
+            $ps->execute();
+            $ps->close();
+        }
+
+        public function addRaceResult($pId, $caId, $date, $position, $points) {
+            $ps = $this->db->prepare("INSERT INTO ResultadosCarreras (caId, pId, caFecha, caPosicion, caPuntos) VALUES (?, ?, ?, ?, ?)");
+            $ps->bind_param("iisii", $caId, $pId, $date, $position, $points);
             $ps->execute();
             $ps->close();
         }
@@ -309,6 +410,35 @@
             return $points;
         }
 
+        public function getPointsForPosition($position) {
+            if($position > 10) return 0;
+            $points = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1];
+            return $points[$position - 1];
+        }
+
+        public function getAllPilots() {
+            $result = $this->db->query("SELECT pId FROM Pilotos");
+            $pilots = [];
+            while($row = $result->fetch_assoc()) {
+                $pilots[] = $row["pId"];
+            }
+            return $pilots;
+        }
+
+        public function addPointsToTeam($name, $points) {
+            $ps = $this->db->prepare("UPDATE Escuderias SET ePuntos = ePuntos + ? WHERE eNombre = ?");
+            $ps->bind_param("is", $points, $name);
+            $ps->execute();
+            $ps->close();
+        }
+
+        public function addPointsToPilot($pId, $points) {
+            $ps = $this->db->prepare("UPDATE Pilotos SET pPuntos = pPuntos + ? WHERE pId = ?");
+            $ps->bind_param("ii", $points, $pId);
+            $ps->execute();
+            $ps->close();
+        }
+
         public function insertIntoPilotos($data) {
             $ps = $this->db->prepare("INSERT IGNORE INTO Pilotos (pId, pNombre, pApellido, pNacionalidad, coId, pPuntos) VALUES (?, ?, ?, ?, ?, ?)");
             $ps->execute($data);
@@ -334,7 +464,7 @@
         }
 
         public function insertIntoResultadosCarreras($data) {
-            $ps = $this->db->prepare("INSERT IGNORE INTO ResultadosCarreras (caId, pId, caPosicion, caPuntos) VALUES (?, ?, ?, ?)");
+            $ps = $this->db->prepare("INSERT IGNORE INTO ResultadosCarreras (caId, pId, caFecha, caPosicion, caPuntos) VALUES (?, ?, ?, ?, ?)");
             $ps->execute($data);
             $ps->close();
         }
@@ -355,7 +485,7 @@
                 coMotor VARCHAR(32) NOT NULL,
                 coNeumaticos VARCHAR(32) NOT NULL,
                 CHECK (coMotor IN ('ferrari', 'mercedes', 'honda', 'renault')),
-                CHECK (coNeumaticos IN ('blandos', 'medios', 'duros', 'intermedios', 'fullWet')));");
+                CHECK (coNeumaticos IN ('blandos', 'medios', 'duros', 'inter', 'fullWet')));");
         }
 
         public function createTableEscuderias() {
@@ -383,6 +513,7 @@
             $this->db->query("CREATE TABLE IF NOT EXISTS ResultadosCarreras (
                 caId INT NOT NULL,
                 pId INT NOT NULL,
+                caFecha DATE NOT NULL,
                 caPosicion INT NOT NULL,
                 caPuntos INT NOT NULL,
                 FOREIGN KEY (caId) REFERENCES Carreras(caId),
@@ -390,23 +521,38 @@
                 PRIMARY KEY (caId, pId),
                 UNIQUE (caPosicion, caId));");
         }
-
+        
         public function createConection() {
             $this->db = new mysqli($this->server, $this->user, $this->pass);
-    
+            
             // Verificar si hubo error en la conexión
             if ($this->db->connect_error) {
                 die("Error de conexión a MySQL: " . $this->db->connect_error);
             }
         }
-    }
 
+        public function simulateRace($caId, $date) {
+            $pilots = $this->getAllPilots();
+            shuffle($pilots);
+            for ($i = 1; $i <= count($pilots); $i++) {
+                $pId = $pilots[$i - 1];
+                $points = $this->getPointsForPosition($i);
+                $this->addRaceResult($pId, $caId, $date, $i, $points);
+                $this->addPointsToPilot($pId, $points);
+                $this->addPointsToTeam($this->getTeamForPilot($pId), $points);
+            }
+        }
+    }
+    
     $liga = new Liga();
-    $cars = $liga->showFreeCars();
-    $freePilots = $liga->showFreePilots();
-    $teams = $liga->showAllTeams();
     $pilotsTable = "";
     $teamsTable = "";
+    $raceResults = "";
+    $cars = "";
+    $freePilots = "";
+    $teams = "";
+    $races = "";
+    $unracedRaces = "";
     if(count($_POST) > 0) {
         if(isset($_POST['importDb'])) {
             if(isset($_FILES["csvDb"])) {
@@ -420,6 +566,10 @@
         if(isset($_POST["classificationTeams"])) {
             $teamsTable = $liga->getClassificationTeams();
         }
+        if(isset($_POST["raceResults"])) {
+            $caId = $_POST["racesToChoose"];
+            $raceResults = $liga->getRaceResults($caId);
+        }
         if(isset($_POST['exportDb'])) {
             $liga->exportData();
         }
@@ -429,21 +579,17 @@
             $pilotCountry = $_POST['pilotCountry'];
             $pilotCar = $_POST['pilotCar'];
             $liga->addPilot($pilotName, $pilotSurname, $pilotCountry, $pilotCar);
-            $cars = $liga->showFreeCars();
-            $freePilots = $liga->showFreePilots();
         }
         if(isset($_POST['addCar'])) {
             $carEngine = $_POST['carEngine'];
             $carTires = $_POST['carTires'];
             $liga->addCar($carEngine, $carTires);
-            $cars = $liga->showFreeCars();
         }
         if(isset($_POST['addTeam'])) {
             $teamName = $_POST["teamName"];
             $teamPilot1 = $_POST["teamPilot1"];
             $teamPilot2 = $_POST["teamPilot2"];
             if($teamPilot1 !== $teamPilot2) $liga->addTeam($teamName, $teamPilot1, $teamPilot2);
-            $freePilots = $liga->showFreePilots();
         }
         if(isset($_POST['addRace'])) {
             $raceName = $_POST["raceName"];
@@ -455,18 +601,26 @@
         if(isset($_POST['removePilot'])) {
             $pId = $_POST['pilotsToRemove'];
             $liga->removePilot($pId);
-            $freePilots = $liga->showFreePilots();
         }
         if(isset($_POST['removeCar'])) {
             $coId = $_POST['carsToRemove'];
             $liga->removeCar($coId);
-            $cars = $liga->showFreeCars();
         }
         if(isset($_POST['removeTeam'])) {
             $name = $_POST['teamsToRemove'];
             $liga->removeTeam($name);
-            $freePilots = $liga->showFreePilots();
         }
+        if(isset($_POST['simulateRace'])) {
+            $caId = $_POST['raceToSimulate'];
+            $date = $_POST['raceDate'];
+            $liga->simulateRace($caId, $date);
+        }
+
+        $cars = $liga->showFreeCars();
+        $freePilots = $liga->showFreePilots();
+        $teams = $liga->showAllTeams();
+        $races = $liga->showPastRaces();
+        $unracedRaces = $liga->showUnracedRaces();
     }
     echo "<html lang='es'>
             <head>
@@ -519,6 +673,18 @@
                         <input type='submit' name='classificationTeams' value='Cargar clasificación'>
                     </form>
                     $teamsTable
+                </section>
+                <section>
+                    <h3>Resultados carrera</h3>
+                    <form action='#' method='post' name='raceResults'>
+                        <label for='racesToChoose'>Carrera: </label>
+                        <select id='racesToChoose' name='racesToChoose' required>
+                            <option value=''>Selecciona una carrera</option>
+                            $races
+                        </select>
+                        <input type='submit' name='raceResults' value='Cargar clasificación'>
+                    </form>
+                    $raceResults
                 </section>
                 <section>
                     <h3>Importar base de datos</h3>
@@ -638,6 +804,19 @@
                             $teams
                         </select>
                         <input type='submit' name='removeTeam' value='Eliminar'>
+                    </form>
+                </section>
+                <section>
+                    <h3>Simular carrera</h3>
+                    <form method='post' action='#' name='simulateRace' enctype='multipart/form-data'>
+                        <label for='raceToSimulate'>Carrera:</label>
+                        <select id='raceToSimulate' name='raceToSimulate' required>
+                            <option value=''>Selecciona una carrera</option>
+                            $unracedRaces
+                        </select>
+                        <label for='raceDate'>Fecha:</label>
+                        <input type='date' id='raceDate' name='raceDate' required>
+                        <input type='submit' name='simulateRace' value='Simular'>
                     </form>
                 </section>
             </main>

@@ -22,6 +22,15 @@ header a:hover {
     color: #fff700;
 }
 
+/*Especificidad: (0, 0, 3) */
+header nav a {
+    background-color: #B30033;
+    color: #ffffff; 
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.25em;
+}
+
 /*Especificidad: (0, 0, 1) */
 nav {
     display: flex;
@@ -33,23 +42,15 @@ nav {
     margin-bottom: 1em;
 }
 
-/*Especificidad: (0, 0, 3) */
-header nav a {
-    background-color: #B30033;
-    color: #ffffff; 
-    text-decoration: none;
-    text-align: center;
-    font-size: 1.25em;
-}
-
 @media (max-width: 899px) {
+    /*Especificidad: (0, 0, 3) */
     header nav a {
         padding: 0;
     }
 }
 
 @media (max-width: 599px) {
-
+    /*Especificidad: (0, 0, 2) */
     header nav {
         flex-direction: column;
         width: auto;
@@ -58,10 +59,12 @@ header nav a {
         margin-bottom: 0;
     }
 
+    /*Especificidad: (0, 0, 2) */
     h1 a {
         font-size: 3em;
     }
 
+    /*Especificidad: (0, 0, 3) y (0, 0, 2) */
     header > nav > a, nav > a {
         font-size: 1.25em;
     }

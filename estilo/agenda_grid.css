@@ -19,10 +19,6 @@ h3 {
 }
 
 /*Especificidad: (0, 0, 1) */
-main {
-    text-align: center;
-}
-
 h4 {
     font-weight: bold;
     background-color: #ffffff;
@@ -34,7 +30,13 @@ h4 {
     margin: 1em 0; 
 }
 
+/*Especificidad: (0, 0, 1) */
+main {
+    text-align: center;
+}
+
 @media (max-width: 599px) { /*Las advertencias de redefinición en esta norma no afectan al código*/
+    /*Especificidad: (0, 0, 1) */
     section {
         padding: 0;
     }

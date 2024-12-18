@@ -1,5 +1,6 @@
 /*Marcos Argüelles Rivera UO295029*/
 
+/*Especificidad: (0, 0, 1) */
 aside {
     max-width: 60em;
 }
@@ -9,13 +10,23 @@ button {
     cursor: pointer;
 }
 
+/*Especificidad: (0, 0, 2) */
+button + button {
+    grid-column: 3 / 4;
+}
+
 /*Especificidad: (0, 0, 1) */
 div {
-    aspect-ratio: 1;            /* Hace que las celdas sean cuadradas */
-    border-radius: 50%;         /* Hace que las luces sean círculos */
-    border: 5px solid #000;     /* Borde oscuro */
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 5px solid #000;
     background-color: #0007; 
-    color: #000000;   /* Fondo semitransparente */
+    color: #000000;
+}
+
+/*Especificidad: (0, 0, 2) */
+div + button {
+    grid-column: 2 / 3;
 }
 
 /*Especificidad: (0, 0, 1)*/
@@ -27,6 +38,18 @@ form {
     margin: 0 3em;
 }
 
+/*Especificidad: (0, 0, 1) */
+h2 + section {
+    display: grid;
+    justify-content: center;
+    margin: 3em;
+    box-shadow: none;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 1em;
+    row-gap: 5em;
+}
+
+/*Especificidad: (0, 0, 2) */
 input + input {
     grid-column: 1 / -1;
     justify-self: center;
@@ -42,11 +65,6 @@ input + input {
     width: 10em;
 }
 
-section > h3 {
-    grid-column: 1 / -1;
-    margin: 0;
-}
-
 /*Especificidad: (0, 0, 1)*/
 input {
     justify-self: right; /* Alinea los inputs a la derecha */
@@ -54,20 +72,15 @@ input {
     margin-top: 1em;
 }
 
-/*Especificidad: (0, 0, 1) */
+/*Especificidad: (0, 0, 2) */
 main p {
     text-align: center;
 }
 
-/*Especificidad: (0, 1, 0) */
-h2 + section {
-    display: grid;
-    justify-content: center;
-    margin: 3em;
-    box-shadow: none;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 1em;
-    row-gap: 5em;
+/*Especificidad: (0, 0, 2) */
+section > h3 {
+    grid-column: 1 / -1;
+    margin: 0;
 }
 
 /*Especificidad: (0, 1, 3) */
@@ -75,37 +88,27 @@ h2 + section {
     animation: changeBackground 1s forwards;
 }
 
-
+/*Especificidad: (0, 2, 3) */
 .load > h2 + section > div:nth-of-type(1) {
     animation-delay: 0ms;
 }
 
-/*Especificidad: (0, 3, 1) */
+/*Especificidad: (0, 2, 3) */
 .load > h2 + section > div:nth-of-type(2) {
     animation-delay: 500ms;
 }
 
-/*Especificidad: (0, 3, 1) */
+/*Especificidad: (0, 2, 3) */
 .load > h2 + section > div:nth-of-type(3) {
     animation-delay: 1000ms;
 }
 
-/*Especificidad: (0, 3, 1) */
+/*Especificidad: (0, 2, 3) */
 .load > h2 + section > div:nth-of-type(4) {
     animation-delay: 1500ms;
 }
 
-/*Especificidad: (0, 1, 0) */
-div + button {
-    grid-column: 2 / 3;
-}
-
-/*Especificidad: (0, 1, 0) */
-button + button {
-    grid-column: 3 / 4;
-}
-
-/*Especificidad: (0, 2, 1) */
+/*Especificidad: (0, 1, 3) */
 .unload h2 + section div {
     animation: out forwards;
 }
@@ -116,21 +119,24 @@ button + button {
     }
 }
 
-@keyframes out { /*Las advertencias de redefinición en esta norma no afectan al código*/
+@keyframes out { /*Las advertencias de redefinición y de color en esta norma no afectan al código*/
     100% {
         background-color: #000;
     }
 }
 
-@media (max-width: 599px) {
+@media (max-width: 599px) { /*Las advertencias de redefinición en estas normas no afectan al código*/
+    /*Especificidad: (0, 0, 1) */
     form {
         margin: 0;
     }
 
+    /*Especificidad: (0, 0, 1) */
     input {
         width: 8em;
     }
 
+    /*Especificidad: (0, 0, 2) */
     h2 + section {
         margin: auto 0;
     }
