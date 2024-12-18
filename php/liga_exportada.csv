@@ -1,0 +1,18 @@
+coches,1,ferrari,medios
+coches,2,mercedes,duros
+coches,3,ferrari,blandos
+coches,4,honda,duros
+coches,5,renault,duros
+coches,6,mercedes,blandos
+coches,7,honda,medios
+pilotos,1,Marcos,Arguelles,España,1,50
+pilotos,2,Fernando,Alonso,España,2,36
+pilotos,3,Carlos,Sainz,España,3,34
+pilotos,4,Mario,Bros,Italia,4,23
+pilotos,5,Max,Verstappen,Holanda,5,7
+escuderias,Ferrari,1,3,84
+escuderias,RedBull,4,5,30
+carreras,1,"Japanese Grand Prix","Suzuka Circuit",Japon,Lluvia
+carreras,2,"Emilia Romagna Grand Prix","Autodromo Enzo e Dino Ferrari",Italia,Calor
+resultadosCarreras,1,1,1,25
+resultadosCarreras,1,2,2,18

@@ -119,9 +119,13 @@ h4 {
 }
 
 /*Especificidad: (0, 0, 1) */
-input {
+input, select {
     margin: 1em;
     display:block;
+}
+
+select {
+    height: 2em;
 }
 
 input + input, form input:nth-last-child(1) {
@@ -352,6 +356,10 @@ video {
     
     li, th, td, p, dt, dd {
         font-size: 1.3em;
+    }
+
+    th, td {
+        padding: 1em 0.5em;
     }
 
     h3 {
